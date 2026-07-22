@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>한글 → 일본어 입력기</title>
+    <meta name="description" content="한글 발음을 치면 일본어 히라가나·가타카나로 바꿔 주는 입력기">
+    <meta name="theme-color" content="#0f6676">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">あ</span>
+          <div class="brand-text">
+            <h1>한글 → 일본어 입력기</h1>
+            <p>한글 발음을 치면 일본어로 바뀝니다</p>
+          </div>
+        </div>
+
+        <fieldset class="segmented" aria-label="글자 종류 선택">
+          <label>
+            <input type="radio" name="script" value="hiragana" checked>
+            <span>ひらがな<small>히라가나</small></span>
+          </label>
+          <label>
+            <input type="radio" name="script" value="katakana">
+            <span>カタカナ<small>가타카나</small></span>
+          </label>
+        </fieldset>
+      </header>
+
+      <section class="workspace" aria-label="입력">
+        <textarea id="editor" spellcheck="false" autofocus
+          placeholder="여기에 한글 발음을 입력하세요.&#10;예) 와타시 → わたし"></textarea>
+
+        <div class="quick-insert" aria-label="특수 글자 넣기">
+          <span class="quick-label">특수 글자</span>
+          <button type="button" class="chip" data-insert="を">を</button>
+          <button type="button" class="chip" data-insert="ー">ー</button>
+          <button type="button" class="chip" data-insert="「">「</button>
+          <button type="button" class="chip" data-insert="」">」</button>
+          <button type="button" class="chip" data-insert="・">・</button>
+        </div>
+
+        <div class="actions">
+          <button id="copyButton" type="button" class="primary">복사하기</button>
+          <button id="clearButton" type="button" class="ghost">지우기</button>
+        </div>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="help">
+        <details>
+          <summary>도움말 · 예시 보기</summary>
+          <div class="help-body">
+            <p class="help-hint">아래 단어를 눌러 예시를 넣어 보세요.</p>
+            <div class="samples">
+              <button type="button" class="sample-button" data-sample="와타시">와타시</button>
+              <button type="button" class="sample-button" data-sample="니혼고">니혼고</button>
+              <button type="button" class="sample-button" data-sample="아리가토우">아리가토우</button>
+              <button type="button" class="sample-button" data-sample="토우쿄우">토우쿄우</button>
+              <button type="button" class="sample-button" data-sample="신주쿠">신주쿠</button>
+              <button type="button" class="sample-button" data-sample="맛차">맛차</button>
+            </div>
+            <div class="cheat">
+              <p><b>흐린소리 · 맑은소리</b> — 흐린소리(が·だ·ば)는 <b>ㄱㄷㅂ</b>, 맑은소리(か·た·ぱ)는 <b>ㅋㅌㅍ</b>로 입력해요.</p>
+              <p class="cheat-map">ㄱ가=が · ㅋ카=か&nbsp;&nbsp;/&nbsp;&nbsp;ㄷ다=だ · ㅌ타=た&nbsp;&nbsp;/&nbsp;&nbsp;ㅂ바=ば · ㅍ파=ぱ</p>
+              <p><b>장음(ー)</b>은 <b>-</b>(하이픈)이나 모음으로: 코-히- → コーヒー, 토우쿄우 → とうきょう</p>
+              <p><b>외래어 특수음</b>: 두=づ · 즈=ず · 티=てぃ · 투=とぅ · 셰=しぇ</p>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <footer class="statusbar" aria-label="상태">
+        <span id="modeStatus"></span>
+      </footer>
+    </main>
+
+    <script src="src/kana-engine.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

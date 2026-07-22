@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "basic-watashi",
+      "category": "basic",
+      "input": "와타시",
+      "script": "hiragana",
+      "expected": "わたし"
+    },
+    {
+      "id": "basic-hiragana",
+      "category": "basic",
+      "input": "히라가나",
+      "script": "hiragana",
+      "expected": "ひらがな"
+    },
+    {
+      "id": "coda-n-shinjuku",
+      "category": "coda",
+      "input": "신주쿠",
+      "script": "hiragana",
+      "expected": "しんじゅく",
+      "status": "provisional"
+    },
+    {
+      "id": "coda-sokuon-gakkou",
+      "category": "coda",
+      "input": "갓코우",
+      "script": "hiragana",
+      "expected": "がっこう",
+      "status": "provisional"
+    },
+    {
+      "id": "basic-sushi",
+      "category": "basic",
+      "input": "스시",
+      "script": "hiragana",
+      "expected": "すし"
+    },
+    {
+      "id": "basic-tsuki",
+      "category": "basic",
+      "input": "츠키",
+      "script": "hiragana",
+      "expected": "つき"
+    },
+    {
+      "id": "basic-arigatou",
+      "category": "basic",
+      "input": "아리가토우",
+      "script": "hiragana",
+      "expected": "ありがとう"
+    },
+    {
+      "id": "basic-ohayou",
+      "category": "basic",
+      "input": "오하요우",
+      "script": "hiragana",
+      "expected": "おはよう"
+    },
+    {
+      "id": "basic-sayounara",
+      "category": "basic",
+      "input": "사요우나라",
+      "script": "hiragana",
+      "expected": "さようなら"
+    },
+    {
+      "id": "coda-n-nihongo",
+      "category": "coda",
+      "input": "니혼고",
+      "script": "hiragana",
+      "expected": "にほんご",
+      "status": "provisional"
+    },
+    {
+      "id": "basic-gakusei",
+      "category": "basic",
+      "input": "가쿠세이",
+      "script": "hiragana",
+      "expected": "がくせい"
+    },
+    {
+      "id": "coda-n-sensei",
+      "category": "coda",
+      "input": "센세이",
+      "script": "hiragana",
+      "expected": "せんせい",
+      "status": "provisional"
+    },
+    {
+      "id": "contracted-ryokou",
+      "category": "contracted-sound",
+      "input": "료코우",
+      "script": "hiragana",
+      "expected": "りょこう"
+    },
+    {
+      "id": "contracted-jazz",
+      "category": "contracted-sound",
+      "input": "쟈즈",
+      "script": "hiragana",
+      "expected": "じゃず"
+    },
+    {
+      "id": "tense-jju",
+      "category": "tense-onset",
+      "input": "쭈",
+      "script": "hiragana",
+      "expected": "っじゅ",
+      "status": "provisional"
+    },
+    {
+      "id": "coda-sokuon-matcha",
+      "category": "coda",
+      "input": "맛차",
+      "script": "hiragana",
+      "expected": "まっちゃ",
+      "status": "provisional"
+    },
+    {
+      "id": "coda-sokuon-rakkyo",
+      "category": "coda",
+      "input": "랏쿄",
+      "script": "hiragana",
+      "expected": "らっきょ",
+      "status": "provisional"
+    },
+    {
+      "id": "coda-n-fujisan",
+      "category": "coda",
+      "input": "후지산",
+      "script": "hiragana",
+      "expected": "ふじさん",
+      "status": "provisional"
+    },
+    {
+      "id": "basic-arubaito",
+      "category": "basic",
+      "input": "아루바이토",
+      "script": "hiragana",
+      "expected": "あるばいと"
+    },
+    {
+      "id": "punctuation-long-vowel-juice",
+      "category": "punctuation",
+      "input": "쥬-스",
+      "script": "hiragana",
+      "expected": "じゅーす"
+    },
+    {
+      "id": "vowel-wo",
+      "category": "vowel-approximation",
+      "input": "워",
+      "script": "hiragana",
+      "expected": "うぉ",
+      "status": "provisional"
+    },
+    {
+      "id": "normalization-conjoining-jamo-wa",
+      "category": "normalization",
+      "input": "\u110b\u116a",
+      "script": "hiragana",
+      "expected": "わ"
+    },
+    {
+      "id": "script-katakana",
+      "category": "script",
+      "input": "카타카나",
+      "script": "katakana",
+      "expected": "カタカナ"
+    },
+    {
+      "id": "passthrough-ascii",
+      "category": "passthrough",
+      "input": "ABC 123",
+      "script": "hiragana",
+      "expected": "ABC 123"
+    },
+    {
+      "id": "passthrough-combining-latin",
+      "category": "passthrough",
+      "input": "e\u0301",
+      "script": "hiragana",
+      "expected": "e\u0301"
+    },
+    {
+      "id": "passthrough-combining-kana",
+      "category": "passthrough",
+      "input": "か\u3099",
+      "script": "hiragana",
+      "expected": "か\u3099"
+    },
+    {
+      "id": "punctuation-fullwidth",
+      "category": "punctuation",
+      "input": "쥬-스!",
+      "script": "hiragana",
+      "expected": "じゅーす！"
+    },
+    {
+      "id": "loanword-hotel-coda-r",
+      "category": "coda",
+      "input": "호텔",
+      "script": "katakana",
+      "expected": "ホテル",
+      "status": "provisional"
+    },
+    {
+      "id": "loanword-coffee-choon",
+      "category": "loanword",
+      "input": "코-히-",
+      "script": "katakana",
+      "expected": "コーヒー"
+    },
+    {
+      "id": "learnability-tokyo-plain-k",
+      "category": "basic",
+      "input": "토우쿄우",
+      "script": "hiragana",
+      "expected": "とうきょう"
+    }
+  ]
+}
