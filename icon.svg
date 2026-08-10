@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="일본어 입력기">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="책방">
   <rect width="512" height="512" rx="104" fill="#0f6676"/>
   <text x="256" y="286" text-anchor="middle" dominant-baseline="middle"
-    font-family="'Hiragino Sans','Yu Gothic','Noto Sans CJK JP',sans-serif"
-    font-size="300" font-weight="700" fill="#ffffff">あ</text>
+    font-family="'Hiragino Sans','Yu Gothic','Noto Sans CJK JP','Apple SD Gothic Neo',sans-serif"
+    font-size="300" font-weight="700" fill="#ffffff">本</text>
 </svg>
