@@ -55,6 +55,27 @@
   font-weight: 400;
 }
 
+/* ---------- 묶음 대표 사진 ---------- */
+.group-photo {
+  margin: 0 0 14px;
+}
+
+.group-photo img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-muted);
+}
+
+.group-photo figcaption {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
 /* ---------- 표 ---------- */
 .book-table {
   width: 100%;
