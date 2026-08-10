@@ -1,0 +1,243 @@
+/* 책 목록 페이지 전용. 색·글꼴 토큰은 styles.css를 따른다. */
+
+.shell-wide {
+  max-width: 940px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.backlink {
+  color: var(--brand-strong);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.backlink:hover {
+  text-decoration: underline;
+}
+
+.backlink:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.books-feedback {
+  padding: 12px 22px 0;
+  margin: 0;
+}
+
+/* ---------- 서가 묶음 ---------- */
+.booklist {
+  padding: 8px 22px 4px;
+}
+
+.group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 18px 0 10px;
+  font-size: 18px;
+}
+
+.group-count {
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* ---------- 표 ---------- */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.book-table th {
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.book-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.book-table tbody tr:hover {
+  background: var(--surface-muted);
+}
+
+.col-no {
+  width: 52px;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.col-copy {
+  width: 96px;
+  text-align: right;
+}
+
+.jp-title {
+  display: block;
+  font-size: 21px;
+  line-height: 1.45;
+}
+
+.jp-sub {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.col-meta {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.meta-sub {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.dup-note {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand-tint);
+  color: var(--brand-strong);
+  font-size: 13px;
+}
+
+.unread-title {
+  display: block;
+  color: var(--danger);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.unread-row .jp-sub {
+  font-size: 14px;
+}
+
+/* ---------- 복사 버튼 ---------- */
+.copy-button {
+  min-width: 84px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  background: var(--brand-strong);
+}
+
+.copy-button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.copy-button.is-success {
+  background: #1f9d57;
+}
+
+.copy-button.is-error {
+  background: var(--danger);
+}
+
+.copy-button[disabled] {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.books-note {
+  padding: 14px 22px 8px;
+}
+
+.books-note .help-body p {
+  margin: 8px 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ---------- 좁은 화면: 표를 카드로 ---------- */
+@media (max-width: 640px) {
+  .booklist {
+    padding: 8px 14px 4px;
+  }
+
+  .book-table thead {
+    display: none;
+  }
+
+  .book-table,
+  .book-table tbody,
+  .book-table tr,
+  .book-table td {
+    display: block;
+    width: auto;
+  }
+
+  .book-table tr {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 12px 14px 12px 44px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .book-table td {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .col-no {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    width: auto;
+  }
+
+  .col-meta {
+    margin-top: 8px;
+  }
+
+  .col-copy {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .copy-button {
+    width: 100%;
+    min-height: 48px;
+  }
+}

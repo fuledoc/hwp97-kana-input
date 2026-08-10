@@ -389,6 +389,22 @@ summary:focus-visible {
   font-size: 15px;
 }
 
+.statusbar-link {
+  margin-left: auto;
+  color: var(--brand-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.statusbar-link:hover {
+  text-decoration: underline;
+}
+
+.statusbar-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
 /* ---------- 좁은 화면 ---------- */
 @media (max-width: 560px) {
   .shell {
