@@ -76,6 +76,21 @@
   font-size: 14px;
 }
 
+/* ---------- 표지 ---------- */
+/* 앞표지는 실물 확인용이다. 화면에서 제목보다 커지지 않게 폭을 고정한다. */
+.col-cover {
+  width: 88px;
+}
+
+.col-cover img {
+  display: block;
+  width: 72px;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface-muted);
+}
+
 /* ---------- 표 ---------- */
 .book-table {
   width: 100%;
@@ -131,6 +146,13 @@
   color: var(--text);
   font-size: 15px;
   line-height: 1.5;
+}
+
+/* 판(printing)이 갈려 실물 판권장 확인이 필요한 항목 */
+.check-note {
+  color: var(--danger);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .meta-sub {
@@ -257,6 +279,22 @@
 
   .col-meta {
     margin-top: 8px;
+  }
+
+  /* 좁은 화면에서는 표지를 카드 오른쪽 위에 띄운다. */
+  .book-table tr {
+    padding-right: 96px;
+  }
+
+  .col-cover {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    width: auto;
+  }
+
+  .col-cover img {
+    width: 68px;
   }
 
   .col-copy {
