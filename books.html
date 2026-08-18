@@ -10,8 +10,8 @@
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icon.svg">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="src/styles.css?v=5">
-    <link rel="stylesheet" href="src/books.css?v=5">
+    <link rel="stylesheet" href="src/styles.css?v=6">
+    <link rel="stylesheet" href="src/books.css?v=6">
   </head>
   <body>
     <main class="shell shell-wide">
@@ -27,11 +27,10 @@
       </header>
 
       <section class="howto" aria-label="사용법">
-        <p>항목은 <b>알라딘 등록 화면의 순서·칸 이름</b> 그대로입니다. 위에서 아래로 하나씩 눌러 옮겨 담으세요. 글자를 누르면 그 항목만 복사됩니다.</p>
-        <p><b>ISBN을 먼저</b> 알라딘 등록 화면 맨 위의 「ISBN(바코드)」 칸에 붙여넣고 <b>검색하기</b>를 눌러 보세요. 책이 찾아지면 제목·저자·출판사·쪽수가 저절로 채워져서, 상태와 가격만 넣으면 됩니다.</p>
-        <p><span class="badge badge-have">알라딘에 있음</span> 표시가 붙은 책은 ISBN만 넣으면 알라딘이 알아서 채웁니다. <span class="badge badge-new">알라딘에 없음</span>은 항목을 하나씩 옮겨 담아야 합니다. <span class="badge badge-guess">분류는 제안값</span>은 알라딘이 정한 분류가 아직 없어서 제가 비슷한 책을 보고 골라 둔 것이니, 더 맞는 게 있으면 바꾸세요.</p>
-        <p>표지 아래 <b>초록색 「알라딘 등록됨」</b>이 붙은 책은 알라딘에 이미 있습니다. ISBN만 넣고 검색하면 제목·저자·출판사·쪽수가 저절로 채워집니다. <b>「직접 등록」</b>인 책은 아래 항목을 하나씩 옮겨 담아야 합니다.</p>
+        <p>항목은 <b>알라딘 등록 화면의 순서·칸 이름</b> 그대로입니다. 글자를 누르면 그 항목만 복사되니, 위에서 아래로 하나씩 눌러 옮겨 담으세요.</p>
+        <p>표지 아래 <b><span class="badge badge-have">알라딘 검색됨</span></b>이 붙은 책은 알라딘에 이미 있습니다. <b>ISBN</b>을 등록 화면 맨 위 「ISBN(바코드)」 칸에 붙여넣고 <b>검색하기</b>를 누르면 제목·저자·출판사·쪽수가 저절로 채워져서, 상태와 가격만 넣으면 됩니다. <b>「직접 등록」</b>인 책만 항목을 하나씩 옮겨 담으시면 됩니다.</p>
         <p><b>표지</b>를 누르면 사진이 컴퓨터에 저장됩니다. 알라딘의 「상품 이미지」에서 그 파일을 첨부하세요.</p>
+        <p><span class="badge badge-guess">분류는 제안값</span>은 알라딘이 정해 둔 분류가 없어서 비슷한 책을 보고 골라 둔 것입니다. 더 맞는 분류가 있으면 바꾸셔도 됩니다.</p>
       </section>
 
       <p id="bookFeedback" class="feedback books-feedback" role="status" aria-live="polite"></p>
@@ -293,7 +292,7 @@
             <tr>
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784152091642.jpg" download="9784152091642.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784152091642.jpg" alt="繁栄（上） 표지" width="500" height="724" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784152091642.jpg" download="9784152091642.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784152091642.jpg" alt="繁栄（上） 표지" width="500" height="724" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -379,7 +378,7 @@
             <tr>
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784062579377.jpg" download="9784062579377.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062579377.jpg" alt="輪廻する宇宙 표지" width="500" height="774" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784062579377.jpg" download="9784062579377.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062579377.jpg" alt="輪廻する宇宙 표지" width="500" height="774" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -402,7 +401,7 @@
             <tr>
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784569698250.jpg" download="9784569698250.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569698250.jpg" alt="［新訳］ローマ帝国衰亡史（下） 표지" width="396" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784569698250.jpg" download="9784569698250.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569698250.jpg" alt="［新訳］ローマ帝国衰亡史（下） 표지" width="396" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -423,7 +422,7 @@
             <tr>
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087205091.jpg" download="9784087205091.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087205091.jpg" alt="リーダーは半歩前を歩け 표지" width="500" height="803" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087205091.jpg" download="9784087205091.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087205091.jpg" alt="リーダーは半歩前を歩け 표지" width="500" height="803" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -491,7 +490,7 @@
             <tr>
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121018625.jpg" download="9784121018625.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121018625.jpg" alt="入門！論理学 표지" width="436" height="682" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121018625.jpg" download="9784121018625.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121018625.jpg" alt="入門！論理学 표지" width="436" height="682" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -646,7 +645,7 @@
             <tr>
               <td class="col-no" data-label="번호">13</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -691,7 +690,7 @@
             <tr>
               <td class="col-no" data-label="번호">15</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -735,7 +734,7 @@
             <tr>
               <td class="col-no" data-label="번호">17</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784140885178.jpg" download="9784140885178.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140885178.jpg" alt="「司馬遼太郎」で学ぶ日本史 표지" width="500" height="777" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784140885178.jpg" download="9784140885178.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140885178.jpg" alt="「司馬遼太郎」で学ぶ日本史 표지" width="500" height="777" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -757,7 +756,7 @@
             <tr>
               <td class="col-no" data-label="번호">18</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784062728447.jpg" download="9784062728447.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062728447.jpg" alt="高血圧はほっとくのが一番 표지" width="500" height="760" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784062728447.jpg" download="9784062728447.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062728447.jpg" alt="高血圧はほっとくのが一番 표지" width="500" height="760" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -780,7 +779,7 @@
             <tr>
               <td class="col-no" data-label="번호">19</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087727838.jpg" download="9784087727838.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087727838.jpg" alt="もものかんづめ 표지" width="500" height="699" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087727838.jpg" download="9784087727838.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087727838.jpg" alt="もものかんづめ 표지" width="500" height="699" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -845,7 +844,7 @@
             <tr>
               <td class="col-no" data-label="번호">22</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784901318631.jpg" download="9784901318631.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784901318631.jpg" alt="見えない世界の摩訶不思議 표지" width="439" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784901318631.jpg" download="9784901318631.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784901318631.jpg" alt="見えない世界の摩訶不思議 표지" width="439" height="640" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -867,7 +866,7 @@
             <tr>
               <td class="col-no" data-label="번호">23</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087204445.jpg" download="9784087204445.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087204445.jpg" alt="悩む力 표지" width="500" height="813" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 등록됨</span><span class="cover-save-label">표지 저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087204445.jpg" download="9784087204445.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087204445.jpg" alt="悩む力 표지" width="500" height="813" loading="lazy" decoding="async"><span class="cover-flag cover-flag-have">알라딘 검색됨</span><span class="cover-save-label">표지 저장</span></a>
               </td>
               <td class="col-info" data-label="책 정보">
                 <dl class="fields">
@@ -909,6 +908,6 @@
       </footer>
     </main>
 
-    <script src="src/books.js?v=5"></script>
+    <script src="src/books.js?v=6"></script>
   </body>
 </html>
