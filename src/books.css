@@ -155,8 +155,44 @@
 /* ---------- 표지: 누르면 사진이 저장된다 ---------- */
 .cover-save {
   display: block;
+  position: relative;
   width: 152px;
   text-decoration: none;
+}
+
+/* 알라딘 등록 여부는 목록을 훑을 때 가장 먼저 눈에 들어와야 한다.
+   등록된 책은 ISBN 하나로 끝나고, 아닌 책은 항목을 전부 옮겨 담아야 해서
+   어머니 입장에서 작업량이 완전히 다르다. */
+/* 표지 그림을 가리지 않도록 이미지 위쪽에 따로 둔다.
+   어머니가 실물 책과 대조하실 그림이라 제목을 덮으면 안 된다. */
+.cover-flag {
+  display: block;
+  margin-bottom: 5px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.cover-flag-have {
+  background: #12874e;
+  color: #fff;
+}
+
+.cover-flag-new {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cover-flag-have {
+    background: #1f9d57;
+    color: #082514;
+  }
 }
 
 .cover-save-label {
