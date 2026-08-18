@@ -18,6 +18,12 @@
 
 탁음(が·だ·ば)은 평음 `ㄱㄷㅂ`, 청음(か·た·ぱ)은 격음 `ㅋㅌㅍ`로 입력합니다. 자세한 규칙과 예시는 화면의 「도움말 · 예시 보기」에 있습니다.
 
+### 한자 바꾸기
+
+가나가 입력되면 잠시 뒤 아래에 한자 후보가 뜹니다. 버튼을 눌러야 바뀌며 **자동으로 삽입되지 않습니다**. 후보 첫 항목은 언제나 원문 가나라, 되돌리기도 같은 방식으로 합니다. 사전에 없는 말이면 아무것도 뜨지 않습니다.
+
+사전은 첫 입력 때 `dict/kanji.txt`(전송 기준 약 1.3MB)를 한 번 내려받아 브라우저가 캐시합니다. 내려받기에 실패하면 한자 기능만 조용히 꺼지고 가나 변환·복사는 그대로 동작합니다.
+
 ### 책 제목 목록 (`books.html`)
 
 서가 사진에서 옮겨 적어 서지 검색으로 대조한 일본어 책 제목을 표로 모아 둔 별도 페이지입니다. 제목마다 「복사」 버튼이 있어 입력기를 거치지 않고 바로 판매글에 붙여넣습니다. 입력기 화면 아래 「책 제목 목록」 링크로 오갑니다.
@@ -66,6 +72,9 @@ Windows 11에서 이벤트 로그가 필요하면 `index.html?debug-ime=1`로 �
 - `src/kana-engine.js`: DOM 없는 변환 엔진
 - `src/app.js`: 입력 버퍼, IME 상태, 선택 범위와 UI 연결
 - `src/styles.css`: 라이트/다크 대응, 큰 글자·버튼
+- `src/kanji-engine.js`: DOM 없는 가나→한자 변환 엔진(통짜 조회 → 조사 1보 예측 분절)
+- `dict/kanji.txt`, `dict/COPYING`: 가공 사전과 GPL v2 전문
+- `tools/build-kanji-dict.js`: SKK-JISYO.L → `dict/kanji.txt` 변환 스크립트
 - `manifest.webmanifest`, `icon.svg`: 「앱으로 설치」용 최소 PWA 구성
 - `test/kana-engine.test.js`: 엔진 단위·골든 코퍼스·전체 음절 불변식 테스트
 - `test/kana-engine-edge.test.js`: Romaji 스트리밍·Unicode 경계 회귀 테스트
@@ -74,5 +83,13 @@ Windows 11에서 이벤트 로그가 필요하면 `index.html?debug-ime=1`로 �
 - `docs/hangul-phonetic-policy.md`: Hangul Phonetic 정책과 한계
 - `AGENTS.md`: 프로젝트 규칙과 에이전트 운용 원칙
 - `archive/`: 이전 원본 보관용이며 개발 대상이 아님
+
+## 사전 라이선스
+
+한자 변환 사전은 [SKK-JISYO.L](https://github.com/skk-dev/dict)을 가공한 것입니다.
+
+Copyright (C) 1988-2014 Masahiko Sato, Hironobu Takahashi, Yukiyoshi Kameyama, NAKAJIMA Mikio, MITA Yuusuke, and the SKK Development Team.
+
+**GNU General Public License version 2 이상**의 조건으로 배포됩니다. 전문은 [`dict/COPYING`](dict/COPYING)에 있고, 가공 방법은 [`tools/build-kanji-dict.js`](tools/build-kanji-dict.js)에서 확인할 수 있습니다.
 
 배경 조사와 참고 링크는 [조사 메모](docs/research.md)에 정리되어 있습니다.

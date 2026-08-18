@@ -16,6 +16,9 @@ class FakeElement {
     this.selectionEnd = this.value.length;
     this.selectionDirection = "none";
     this.scrollTop = 0;
+    this.children = [];
+    this.hidden = Boolean(options.hidden);
+    this.lang = "";
     const classes = new Set();
     this.classList = {
       add: (name) => classes.add(name),
@@ -94,6 +97,11 @@ class FakeElement {
     this.setSelectionRange(0, this.value.length);
   }
 
+  appendChild(child) {
+    this.children.push(child);
+    return child;
+  }
+
   focus() {}
 }
 
@@ -134,6 +142,10 @@ function createHarness(options = {}) {
   const clearButton = new FakeElement({ textContent: "지우기" });
   const sampleButtons = [new FakeElement({ dataset: { sample: "와타시" } })];
   const insertButtons = [new FakeElement({ dataset: { insert: "を" } })];
+  const kanjiPanel = new FakeElement({ hidden: true });
+  const kanjiTarget = new FakeElement();
+  const kanjiChoices = new FakeElement();
+  const kanjiMore = new FakeElement({ hidden: true });
   const scriptInputs = [
     new FakeElement({ value: "hiragana", checked: options.script !== "katakana" }),
     new FakeElement({ value: "katakana", checked: options.script === "katakana" }),
@@ -149,6 +161,10 @@ function createHarness(options = {}) {
       if (selector === "#editor") return editor;
       if (selector === "#modeStatus") return modeStatus;
       if (selector === "#feedback") return feedback;
+      if (selector === "#kanjiPanel") return kanjiPanel;
+      if (selector === "#kanjiTarget") return kanjiTarget;
+      if (selector === "#kanjiChoices") return kanjiChoices;
+      if (selector === "#kanjiMore") return kanjiMore;
       if (selector === "#copyButton") return copyButton;
       if (selector === "#clearButton") return clearButton;
       if (selector === 'input[name="script"]:checked') {
@@ -170,11 +186,15 @@ function createHarness(options = {}) {
     execCommand() {
       return true;
     },
+    createElement() {
+      return new FakeElement();
+    },
   };
 
   const appSource = fs.readFileSync(path.join(__dirname, "../src/app.js"), "utf8");
   vm.runInNewContext(appSource, {
     KanaEngine,
+    KanjiEngine: require("../src/kanji-engine"),
     document,
     navigator: {},
     setTimeout: scheduler.setTimeout,
@@ -208,6 +228,8 @@ function createHarness(options = {}) {
 
   return {
     editor,
+    kanjiPanel,
+    kanjiChoices,
     sampleButton: sampleButtons[0],
     insertButton: insertButtons[0],
     copyButton,
@@ -551,4 +573,43 @@ test("복사 버튼은 성공 시 성공 표시를 남긴다", () => {
   const app = createHarness({ value: "わたし" });
   app.copyButton.dispatch("click");
   assert.equal(app.copyButton.classList.contains("is-success"), true);
+});
+
+/* ---------- 한자 패널 ----------
+ * 사전은 fetch로 지연 로딩되는데 테스트 하네스에는 fetch가 없다.
+ * 따라서 아래 테스트들은 "사전이 없어도 앱이 멀쩡한가"를 검증한다.
+ * 변환 품질 자체는 test/kanji-engine.test.js가 맡는다.
+ */
+
+test("fetch가 없는 환경에서도 가나 변환과 복사가 정상 동작한다", () => {
+  const app = createHarness();
+  app.compose("와");
+  app.scheduler.runAll();
+  assert.equal(app.editor.value, "わ");
+  app.copyButton.dispatch("click");
+  assert.equal(app.copyButton.classList.contains("is-success"), true);
+});
+
+test("사전을 못 불러오면 한자 패널을 띄우지 않는다", () => {
+  const app = createHarness();
+  app.compose("닌");
+  app.scheduler.runAll();
+  assert.equal(app.kanjiPanel.hidden, true);
+});
+
+test("한자 패널은 조합 중에 뜨지 않는다", () => {
+  const app = createHarness();
+  app.editor.dispatch("compositionstart");
+  app.editor.value = "にんげん";
+  app.editor.setSelectionRange(4, 4);
+  app.editor.dispatch("input", { inputType: "insertCompositionText", isComposing: true });
+  app.scheduler.runAll();
+  assert.equal(app.kanjiPanel.hidden, true);
+});
+
+test("Undo/Redo 직후에는 한자 패널을 띄우지 않는다", () => {
+  const app = createHarness({ value: "にんげん" });
+  app.editor.dispatch("input", { inputType: "historyUndo" });
+  app.scheduler.runAll();
+  assert.equal(app.kanjiPanel.hidden, true);
 });

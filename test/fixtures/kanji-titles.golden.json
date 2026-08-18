@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "note": "사람이 검토한 회귀 계약. 엔진 출력으로 자동 생성하거나 실패를 없애려 일괄 덮어쓰지 않는다.",
+  "cases": [
+    {
+      "id": "title-ningen",
+      "category": "title",
+      "kana": "にんげんしっかく",
+      "expected": "人間失格",
+      "top": "人間失格"
+    },
+    {
+      "id": "title-rashomon",
+      "category": "title",
+      "kana": "らしょうもん",
+      "expected": "羅生門",
+      "top": "羅生門"
+    },
+    {
+      "id": "title-kokoro",
+      "category": "title",
+      "kana": "こころ",
+      "expected": "心",
+      "top": "心"
+    },
+    {
+      "id": "title-yukiguni",
+      "category": "title",
+      "kana": "ゆきぐに",
+      "expected": "雪国",
+      "top": "雪国"
+    },
+    {
+      "id": "title-kinkakuji",
+      "category": "title",
+      "kana": "きんかくじ",
+      "expected": "金閣寺",
+      "top": "金閣寺"
+    },
+    {
+      "id": "title-ginga",
+      "category": "title",
+      "kana": "ぎんがてつどうのよる",
+      "expected": "銀河鉄道の夜",
+      "top": "銀河鉄道の夜"
+    },
+    {
+      "id": "title-tamashii",
+      "category": "title",
+      "kana": "たましいのきおく",
+      "expected": "魂の記憶",
+      "top": "魂の記憶"
+    },
+    {
+      "id": "title-kaze",
+      "category": "title",
+      "kana": "かぜのうたをきけ",
+      "expected": "風の歌を聴け",
+      "top": "風の歌を聞け",
+      "note": "1순위는 다르나 후보로 도달 가능"
+    },
+    {
+      "id": "author-murakami",
+      "category": "author",
+      "kana": "むらかみはるき",
+      "expected": "村上春樹",
+      "top": "村上春樹"
+    },
+    {
+      "id": "author-natsume",
+      "category": "author",
+      "kana": "なつめそうせき",
+      "expected": "夏目漱石",
+      "top": "夏目漱石"
+    },
+    {
+      "id": "author-dazai",
+      "category": "author",
+      "kana": "だざいおさむ",
+      "expected": "太宰治",
+      "top": "太宰治"
+    },
+    {
+      "id": "pub-shincho",
+      "category": "publisher",
+      "kana": "しんちょうぶんこ",
+      "expected": "新潮文庫",
+      "top": "新潮文庫"
+    },
+    {
+      "id": "pub-iwanami",
+      "category": "publisher",
+      "kana": "いわなみしょてん",
+      "expected": "岩波書店",
+      "top": "岩波書店"
+    },
+    {
+      "id": "pub-kodansha",
+      "category": "publisher",
+      "kana": "こうだんしゃがくじゅつぶんこ",
+      "expected": "講談社学術文庫",
+      "top": "講談社学術文庫"
+    },
+    {
+      "id": "pub-todai",
+      "category": "publisher",
+      "kana": "とうきょうだいがくしゅっぱんかい",
+      "expected": "東京大学出版会",
+      "top": "東京大学出版会"
+    },
+    {
+      "id": "place-shinjuku",
+      "category": "place",
+      "kana": "しんじゅくえきひがしぐち",
+      "expected": "新宿駅東口",
+      "top": "新宿駅東口"
+    },
+    {
+      "id": "place-tokyo",
+      "category": "place",
+      "kana": "とうきょう",
+      "expected": "東京",
+      "top": "東京"
+    },
+    {
+      "id": "word-shosetsu",
+      "category": "word",
+      "kana": "しょうせつ",
+      "expected": "小説",
+      "top": "小説"
+    },
+    {
+      "id": "word-bungaku",
+      "category": "word",
+      "kana": "ぶんがく",
+      "expected": "文学",
+      "top": "文学"
+    },
+    {
+      "id": "word-sensei",
+      "category": "word",
+      "kana": "せんせい",
+      "expected": "先生",
+      "top": "先生"
+    },
+    {
+      "id": "mixed-asia",
+      "category": "mixed",
+      "kana": "ひがしアジアのしんじだい",
+      "expected": "東アジアの新時代",
+      "top": "東アジアの新時代"
+    }
+  ]
+}

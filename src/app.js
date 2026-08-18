@@ -5,6 +5,10 @@ const copyButton = document.querySelector("#copyButton");
 const clearButton = document.querySelector("#clearButton");
 const sampleButtons = document.querySelectorAll("[data-sample]");
 const insertButtons = document.querySelectorAll("[data-insert]");
+const kanjiPanel = document.querySelector("#kanjiPanel");
+const kanjiTarget = document.querySelector("#kanjiTarget");
+const kanjiChoices = document.querySelector("#kanjiChoices");
+const kanjiMore = document.querySelector("#kanjiMore");
 const imeDebugEnabled =
   typeof window !== "undefined" &&
   new URLSearchParams(window.location.search).has("debug-ime");
@@ -426,6 +430,7 @@ editor.addEventListener("blur", () => {
 });
 
 editor.addEventListener("beforeinput", (event) => {
+  loadKanjiDictionary();
   beforeInputHint = {
     start: editor.selectionStart,
     end: editor.selectionEnd,
@@ -436,6 +441,7 @@ editor.addEventListener("beforeinput", (event) => {
 
 editor.addEventListener("compositionstart", () => {
   isComposing = true;
+  cancelKanjiSuggestion();
   cancelScheduledHangulTransform();
   beforeInputHint = null;
   recentComposition = null;
@@ -503,6 +509,8 @@ editor.addEventListener("input", (event) => {
   if (event.inputType === "historyUndo" || event.inputType === "historyRedo") {
     cancelScheduledHangulTransform();
     clearPendingHangulTransforms();
+    // 되돌렸는데 같은 제안이 다시 뜨면 무한 루프처럼 느껴진다.
+    cancelKanjiSuggestion();
     lastEditorValue = currentValue;
     return;
   }
@@ -562,6 +570,10 @@ editor.addEventListener("input", (event) => {
   lastEditorValue = currentValue;
   if (!isComposing && !event.isComposing) {
     scheduleHangulTransform();
+    // 가나 변환(120ms)이 끝난 뒤에 조회하도록 더 긴 지연을 쓴다.
+    scheduleKanjiSuggestion();
+  } else {
+    cancelKanjiSuggestion();
   }
 });
 
@@ -667,6 +679,7 @@ clearButton.addEventListener("click", () => {
   editor.value = "";
   lastEditorValue = editor.value;
   romajiBuffer = "";
+  cancelKanjiSuggestion();
   feedback.textContent = "";
   feedback.classList.remove("error");
   updateStatus();
@@ -735,6 +748,170 @@ if (imeDebugEnabled) {
       });
     });
   }
+}
+
+
+/* ---------- 한자 바꾸기 ----------
+ * 원칙(AGENTS.md):
+ *  - 한자를 절대 자동 삽입하지 않는다. 사용자가 눌러야 바뀐다.
+ *  - 조합 중, Undo/Redo 직후, 카타카나 모드에서는 띄우지 않는다.
+ *  - 사전 로딩이 실패하면 한자 기능만 조용히 죽고 가나 변환·복사는 산다.
+ *  - 히트가 없으면 아무것도 렌더하지 않는다(실패 메시지 금지).
+ */
+const KANJI_DELAY = 250;
+const KANJI_VISIBLE = 3;
+
+let kanjiTimer = 0;
+let kanjiDictState = "idle"; // idle | loading | ready | failed
+let kanjiSpan = null; // { start, end, candidates, expanded }
+
+function kanjiAvailable() {
+  return Boolean(kanjiPanel && typeof KanjiEngine !== "undefined");
+}
+
+function hideKanjiPanel() {
+  kanjiSpan = null;
+  if (!kanjiPanel) return;
+  kanjiPanel.hidden = true;
+  kanjiChoices.textContent = "";
+  if (kanjiMore) kanjiMore.hidden = true;
+}
+
+function cancelKanjiSuggestion() {
+  if (kanjiTimer) {
+    clearTimeout(kanjiTimer);
+    kanjiTimer = 0;
+  }
+  hideKanjiPanel();
+}
+
+function loadKanjiDictionary() {
+  if (kanjiDictState !== "idle" || !kanjiAvailable()) return;
+  if (typeof fetch !== "function") {
+    kanjiDictState = "failed";
+    return;
+  }
+  kanjiDictState = "loading";
+  fetch("dict/kanji.txt")
+    .then((response) => (response.ok ? response.text() : Promise.reject(response.status)))
+    .then((text) => {
+      KanjiEngine.loadDictionary(text);
+      kanjiDictState = "ready";
+    })
+    .catch(() => {
+      kanjiDictState = "failed";
+    });
+}
+
+function renderKanjiPanel() {
+  const span = kanjiSpan;
+  if (!span) return;
+  const limit = span.expanded ? span.candidates.length : KANJI_VISIBLE;
+  kanjiTarget.textContent = span.reading;
+  kanjiChoices.textContent = "";
+
+  span.candidates.slice(0, limit).forEach((candidate, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "kanji-choice";
+    button.lang = "ja";
+
+    const text = document.createElement("span");
+    text.textContent = candidate;
+    button.appendChild(text);
+
+    if (index === 0) {
+      const tag = document.createElement("span");
+      tag.className = "kanji-tag";
+      tag.textContent = "가나 그대로";
+      button.appendChild(tag);
+    }
+
+    button.addEventListener("click", () => applyKanji(candidate));
+    kanjiChoices.appendChild(button);
+  });
+
+  if (kanjiMore) {
+    kanjiMore.hidden = span.expanded || span.candidates.length <= KANJI_VISIBLE;
+  }
+  kanjiPanel.hidden = false;
+}
+
+function applyKanji(candidate) {
+  const span = kanjiSpan;
+  if (!span) return;
+  const start = Math.min(span.start, editor.value.length);
+  const end = Math.min(span.end, editor.value.length);
+  if (editor.value.slice(start, end) !== span.reading) {
+    hideKanjiPanel();
+    return;
+  }
+  beforeInputHint = null;
+  const scrollTop = editor.scrollTop;
+  editor.setRangeText(candidate, start, end, "end");
+  editor.scrollTop = scrollTop;
+  lastEditorValue = editor.value;
+  hideKanjiPanel();
+  editor.focus();
+}
+
+function suggestKanji() {
+  if (!kanjiAvailable() || isComposing) return;
+  if (currentScript() === "katakana") return; // 외래어에 한자 후보는 무의미하다
+  if (kanjiDictState === "failed") return;
+  if (kanjiDictState !== "ready") {
+    loadKanjiDictionary();
+    return;
+  }
+  if (editor.selectionStart !== editor.selectionEnd) return;
+
+  const run = KanjiEngine.kanaRunBefore(editor.value, editor.selectionStart);
+  if (!run.text || run.text.length < 2) {
+    hideKanjiPanel();
+    return;
+  }
+
+  const spans = KanjiEngine.convert(run.text);
+  const words = spans.filter((s) => s.type === "word");
+  if (!words.length) {
+    hideKanjiPanel();
+    return;
+  }
+
+  // 캐럿에 가장 가까운(마지막) 단어 스팬만 제안한다.
+  const last = words[words.length - 1];
+  const offset = run.text.lastIndexOf(last.text);
+  if (offset < 0 || last.candidates.length < 2) {
+    hideKanjiPanel();
+    return;
+  }
+
+  kanjiSpan = {
+    start: run.start + offset,
+    end: run.start + offset + last.text.length,
+    reading: last.text,
+    candidates: last.candidates,
+    expanded: false,
+  };
+  renderKanjiPanel();
+}
+
+function scheduleKanjiSuggestion() {
+  if (!kanjiAvailable()) return;
+  if (kanjiTimer) clearTimeout(kanjiTimer);
+  kanjiTimer = setTimeout(() => {
+    kanjiTimer = 0;
+    suggestKanji();
+  }, KANJI_DELAY);
+}
+
+if (kanjiMore) {
+  kanjiMore.addEventListener("click", () => {
+    if (!kanjiSpan) return;
+    kanjiSpan.expanded = true;
+    renderKanjiPanel();
+    editor.focus();
+  });
 }
 
 updateStatus();

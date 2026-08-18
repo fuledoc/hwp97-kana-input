@@ -5,7 +5,7 @@
   "description": "Hangul phonetic, Romaji, and JIS Kana input prototype",
   "scripts": {
     "test": "node --test",
-    "check": "node --check src/kana-engine.js && node --check src/app.js && node --check src/books.js",
+    "check": "node --check src/kana-engine.js && node --check src/kanji-engine.js && node --check src/app.js",
     "verify": "npm run check && npm test"
   },
   "engines": {

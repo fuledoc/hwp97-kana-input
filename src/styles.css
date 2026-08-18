@@ -208,6 +208,78 @@ summary:focus-visible {
   box-shadow: 0 0 0 3px var(--focus);
 }
 
+/* ---------- 한자 바꾸기 ---------- */
+/* 채움색을 쓰지 않는다. 화면의 주 버튼은 「복사하기」 하나여야 한다.
+   한자 버튼은 '크기'로만 눈에 띄게 하고, 시선 유도는 패널 배경이 맡는다. */
+.kanji-panel {
+  padding: 14px 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--brand-tint);
+}
+
+.kanji-head {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.kanji-target {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.kanji-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kanji-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+  padding: 8px 16px;
+  border: 2px solid var(--brand);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 34px;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.kanji-choice:hover {
+  background: var(--brand-tint);
+}
+
+.kanji-choice .kanji-tag {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.kanji-more {
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--brand-strong);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.kanji-more:hover {
+  border-color: var(--brand);
+}
+
 /* ---------- 특수 글자 넣기 ---------- */
 .quick-insert {
   display: flex;

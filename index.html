@@ -38,6 +38,15 @@
         <textarea id="editor" spellcheck="false" autofocus
           placeholder="여기에 한글 발음을 입력하세요.&#10;예) 와타시 → わたし"></textarea>
 
+        <section id="kanjiPanel" class="kanji-panel" hidden aria-label="한자 바꾸기">
+          <p class="kanji-head">
+            <span id="kanjiTarget" class="kanji-target" lang="ja"></span>
+            <span class="kanji-hint">를 한자로 바꿀까요?</span>
+          </p>
+          <div id="kanjiChoices" class="kanji-choices"></div>
+          <button id="kanjiMore" type="button" class="kanji-more" hidden>다른 한자 보기</button>
+        </section>
+
         <div class="quick-insert" aria-label="특수 글자 넣기">
           <span class="quick-label">특수 글자</span>
           <button type="button" class="chip" data-insert="を">を</button>
@@ -84,6 +93,7 @@
     </main>
 
     <script src="src/kana-engine.js"></script>
+    <script src="src/kanji-engine.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>
