@@ -1,4 +1,5 @@
-/* 책 목록 페이지: 제목별 복사 버튼.
+/* 책 목록 페이지: 제목별 복사 버튼과, 글자를 눌러 바로 복사하는 기능.
+   알라딘 상품 등록 화면의 각 칸에 하나씩 붙여넣는 용도라 항목별로 따로 복사한다.
    입력기 본체(app.js)와 상태를 공유하지 않는 독립 스크립트다. */
 
 const feedback = document.querySelector("#bookFeedback");
@@ -66,7 +67,38 @@ function showResult(button, title, copied) {
   );
 }
 
+/* 글자 자체를 누른 경우. 버튼 글자가 곧 내용이므로 텍스트를 바꾸지 않고
+   짧게 강조만 하고, 안내는 상단 안내줄에 남긴다. */
+function showChipResult(chip, copied) {
+  const previous = resetTimers.get(chip);
+  if (previous) {
+    clearTimeout(previous);
+  }
+
+  chip.classList.toggle("is-success", copied);
+  chip.classList.toggle("is-error", !copied);
+
+  feedback.textContent = copied
+    ? `복사했어요 — ${chip.dataset.copy}`
+    : "복사하지 못했어요. 글자를 직접 선택해 복사해 주세요.";
+  feedback.classList.toggle("error", !copied);
+
+  resetTimers.set(
+    chip,
+    setTimeout(() => {
+      chip.classList.remove("is-success", "is-error");
+      resetTimers.delete(chip);
+    }, 1200)
+  );
+}
+
 document.addEventListener("click", async (event) => {
+  const chip = event.target.closest(".copy-text");
+  if (chip && chip.dataset.copy) {
+    showChipResult(chip, await copyText(chip.dataset.copy));
+    return;
+  }
+
   const button = event.target.closest(".copy-button");
   if (!button || button.disabled) {
     return;

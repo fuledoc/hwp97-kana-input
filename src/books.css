@@ -91,6 +91,117 @@
   background: var(--surface-muted);
 }
 
+/* ---------- 누르면 복사되는 글자 ---------- */
+/* 알라딘 등록 화면의 칸마다 따로 붙여넣어야 해서 항목별로 나눠 둔다.
+   button이지만 「버튼처럼」 보이면 표가 시끄러워지므로 글자 모양을 유지하고,
+   점선 밑줄로만 누를 수 있음을 알린다. */
+.copy-text {
+  display: inline;
+  padding: 1px 2px;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline dotted var(--border);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.copy-text:hover {
+  background: var(--brand-tint);
+  text-decoration-color: var(--brand);
+}
+
+.copy-text:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.copy-text.is-success {
+  background: #d8f0e2;
+  text-decoration-color: #1f9d57;
+}
+
+.copy-text.is-error {
+  background: #f7e0e0;
+  text-decoration-color: var(--danger);
+}
+
+@media (prefers-color-scheme: dark) {
+  .copy-text.is-success {
+    background: #17402c;
+  }
+
+  .copy-text.is-error {
+    background: #43201f;
+  }
+}
+
+.isbn-line {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.meta-isbn {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- 표지: 누르면 사진이 저장된다 ---------- */
+.cover-save {
+  display: block;
+  position: relative;
+  width: 72px;
+  text-decoration: none;
+}
+
+.cover-save-label {
+  display: block;
+  margin-top: 3px;
+  color: var(--brand-strong);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cover-save:hover img {
+  border-color: var(--brand);
+}
+
+.cover-save:hover .cover-save-label {
+  text-decoration: underline;
+}
+
+.cover-save:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- 사용법 안내 ---------- */
+.howto {
+  margin: 0 22px 4px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--brand-tint);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.howto p {
+  margin: 4px 0;
+}
+
+.howto b {
+  color: var(--brand-strong);
+}
+
 /* ---------- 표 ---------- */
 .book-table {
   width: 100%;
@@ -295,6 +406,14 @@
 
   .col-cover img {
     width: 68px;
+  }
+
+  .cover-save {
+    width: 68px;
+  }
+
+  .howto {
+    margin: 0 14px 4px;
   }
 
   .col-copy {
