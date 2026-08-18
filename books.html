@@ -10,8 +10,8 @@
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icon.svg">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="src/styles.css?v=2">
-    <link rel="stylesheet" href="src/books.css?v=2">
+    <link rel="stylesheet" href="src/styles.css?v=3">
+    <link rel="stylesheet" href="src/books.css?v=3">
   </head>
   <body>
     <main class="shell shell-wide">
@@ -27,8 +27,9 @@
       </header>
 
       <section class="howto" aria-label="사용법">
-        <p><b>제목·저자·출판사·쪽수·ISBN</b> — 글자를 누르면 그 항목만 복사됩니다.</p>
+        <p>항목은 <b>알라딘 등록 화면의 순서·칸 이름</b> 그대로입니다. 위에서 아래로 하나씩 눌러 옮겨 담으세요. 글자를 누르면 그 항목만 복사됩니다.</p>
         <p><b>ISBN을 먼저</b> 알라딘 등록 화면 맨 위의 「ISBN(바코드)」 칸에 붙여넣고 <b>검색하기</b>를 눌러 보세요. 책이 찾아지면 제목·저자·출판사·쪽수가 저절로 채워져서, 상태와 가격만 넣으면 됩니다.</p>
+        <p><span class="badge badge-have">알라딘에 있음</span> 표시가 붙은 책은 ISBN만 넣으면 알라딘이 알아서 채웁니다. <span class="badge badge-new">알라딘에 없음</span>은 항목을 하나씩 옮겨 담아야 합니다. <span class="badge badge-guess">분류는 제안값</span>은 알라딘이 정한 분류가 아직 없어서 제가 비슷한 책을 보고 골라 둔 것이니, 더 맞는 게 있으면 바꾸세요.</p>
         <p><b>표지</b>를 누르면 사진이 컴퓨터에 저장됩니다. 알라딘의 「상품 이미지」에서 그 파일을 첨부하세요.</p>
       </section>
 
@@ -46,8 +47,7 @@
             <tr>
               <th scope="col" class="col-no">번호</th>
               <th scope="col" class="col-cover">표지</th>
-              <th scope="col" class="col-title">제목</th>
-              <th scope="col" class="col-meta">저자 · 출판사</th>
+              <th scope="col" class="col-info">책 정보 <span class="th-hint">— 글자를 누르면 그 항목만 복사됩니다</span></th>
               <th scope="col" class="col-copy">복사</th>
             </tr>
           </thead>
@@ -55,19 +55,22 @@
             <tr>
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784535560239.jpg" download="9784535560239.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784535560239.jpg" alt="福祉は投資である 표지" width="414" height="600" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784535560239.jpg" download="9784535560239.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784535560239.jpg" alt="福祉は投資である 표지" width="414" height="600" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="福祉は投資である">福祉は投資である</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="岡本祐三・八田達夫・一圓光彌・木村陽子">岡本祐三・八田達夫・一圓光彌・木村陽子</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="日本評論社">日本評論社</button> · <button type="button" class="copy-text meta-year" data-copy="1996">1996</button> · <button type="button" class="copy-text meta-pages" data-copy="201">201쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784535560239">9784535560239</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784535560239">9784535560239</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="福祉は投資である">福祉は投資である</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="岡本祐三・八田達夫・一圓光彌・木村陽子">岡本祐三・八田達夫・一圓光彌・木村陽子</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="日本評論社">日本評論社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="201">201</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="1996-05">1996-05</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학">외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="福祉は投資である">복사</button>
+                <button type="button" class="copy-button" data-copy="福祉は投資である">제목 복사</button>
               </td>
             </tr>
           </tbody>
@@ -86,8 +89,7 @@
             <tr>
               <th scope="col" class="col-no">번호</th>
               <th scope="col" class="col-cover">표지</th>
-              <th scope="col" class="col-title">제목</th>
-              <th scope="col" class="col-meta">저자 · 출판사</th>
+              <th scope="col" class="col-info">책 정보 <span class="th-hint">— 글자를 누르면 그 항목만 복사됩니다</span></th>
               <th scope="col" class="col-copy">복사</th>
             </tr>
           </thead>
@@ -95,223 +97,262 @@
             <tr>
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784641161320.jpg" download="9784641161320.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784641161320.jpg" alt="コンビニエンス・ストア業態の革新 표지" width="327" height="475" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784641161320.jpg" download="9784641161320.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784641161320.jpg" alt="コンビニエンス・ストア業態の革新 표지" width="327" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="コンビニエンス・ストア業態の革新">コンビニエンス・ストア業態の革新</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="金顕哲">金顕哲</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="有斐閣">有斐閣</button> · <button type="button" class="copy-text meta-year" data-copy="2001">2001</button> · <button type="button" class="copy-text meta-pages" data-copy="163">163쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784641161320">9784641161320</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784641161320">9784641161320</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="コンビニエンス・ストア業態の革新">コンビニエンス・ストア業態の革新</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="金顕哲">金顕哲</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="有斐閣">有斐閣</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="163">163</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2001-10">2001-10</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 비즈니스">외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 비즈니스</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="コンビニエンス・ストア業態の革新">복사</button>
+                <button type="button" class="copy-button" data-copy="コンビニエンス・ストア業態の革新">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784792603014.jpg" download="9784792603014.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784792603014.jpg" alt="げだつマン 표지" width="425" height="600" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784792603014.jpg" download="9784792603014.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784792603014.jpg" alt="げだつマン 표지" width="425" height="600" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="げだつマン">げだつマン</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="キクチヒロノリ">キクチヒロノリ</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="青林堂">青林堂</button> · <button type="button" class="copy-text meta-year" data-copy="1999">1999</button> · <button type="button" class="copy-text meta-pages" data-copy="167">167쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784792603014">9784792603014</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784792603014">9784792603014</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="げだつマン">げだつマン</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="キクチヒロノリ">キクチヒロノリ</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="青林堂">青林堂</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="167">167</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="1999-05">1999-05</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 코믹">외국도서 &gt; 일본 도서 &gt; 코믹</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="げだつマン">복사</button>
+                <button type="button" class="copy-button" data-copy="げだつマン">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784915333194.jpg" download="9784915333194.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784915333194.jpg" alt="アップルシード 1 표지" width="500" height="700" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784915333194.jpg" download="9784915333194.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784915333194.jpg" alt="アップルシード 1 표지" width="500" height="700" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="アップルシード 1">アップルシード 1</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="士郎正宗">士郎正宗</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="青心社">青心社</button> · <button type="button" class="copy-text meta-year" data-copy="1985">1985</button> · <button type="button" class="copy-text meta-pages" data-copy="182">182쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784915333194">9784915333194</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784915333194">9784915333194</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="アップルシード 1">アップルシード 1</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="士郎正宗">士郎正宗</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="青心社">青心社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="182">182</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="1989">1989</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 코믹">외국도서 &gt; 일본 도서 &gt; 코믹</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
+                  <p class="check-note">⚠ 1985년 초판과 같은 표지 · 판권장 확인</p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="アップルシード 1">복사</button>
+                <button type="button" class="copy-button" data-copy="アップルシード 1">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784878920073.jpg" download="9784878920073.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784878920073.jpg" alt="仙術超攻殻ORION 표지" width="334" height="475" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784878920073.jpg" download="9784878920073.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784878920073.jpg" alt="仙術超攻殻ORION 표지" width="334" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="仙術超攻殻ORION">仙術超攻殻ORION</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="士郎正宗">士郎正宗</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="青心社">青心社</button> · <button type="button" class="copy-text meta-pages" data-copy="275">275쪽</button> <span class="check-note">(판 확인 필요)</span></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784878920073">9784878920073</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784878920073">9784878920073</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="仙術超攻殻ORION">仙術超攻殻ORION</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="士郎正宗">士郎正宗</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="青心社">青心社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="253">253</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="1991-12">1991-12</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 코믹">외국도서 &gt; 일본 도서 &gt; 코믹</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
+                  <p class="check-note">⚠ 2010년 재간본은 275쪽 · 판권장 확인</p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="仙術超攻殻ORION">복사</button>
+                <button type="button" class="copy-button" data-copy="仙術超攻殻ORION">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784884000998.jpg" download="9784884000998.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784884000998.jpg" alt="東アジアの新時代に向けて 표지" width="433" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784884000998.jpg" download="9784884000998.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784884000998.jpg" alt="東アジアの新時代に向けて 표지" width="433" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="東アジアの新時代に向けて">東アジアの新時代に向けて</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="東北アジア問題研究所 編">東北アジア問題研究所 編</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="新幹社">新幹社</button> · <button type="button" class="copy-text meta-year" data-copy="2012">2012</button> · <button type="button" class="copy-text meta-pages" data-copy="285">285쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784884000998">9784884000998</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784884000998">9784884000998</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="東アジアの新時代に向けて">東アジアの新時代に向けて</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="東北アジア問題研究所 編">東北アジア問題研究所 編</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="新幹社">新幹社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="285">285</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2012-11">2012-11</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="東アジアの新時代に向けて">복사</button>
+                <button type="button" class="copy-button" data-copy="東アジアの新時代に向けて">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784837920175.jpg" download="9784837920175.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784837920175.jpg" alt="「体を温める」と病気は必ず治る 표지" width="323" height="475" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784837920175.jpg" download="9784837920175.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784837920175.jpg" alt="「体を温める」と病気は必ず治る 표지" width="323" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="「体を温める」と病気は必ず治る">「体を温める」と病気は必ず治る</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="クスリをいっさい使わない“最善の内臓強化法”">クスリをいっさい使わない“最善の内臓強化法”</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="石原結實">石原結實</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="三笠書房">三笠書房</button> · <button type="button" class="copy-text meta-year" data-copy="2003">2003</button> · <button type="button" class="copy-text meta-pages" data-copy="254">254쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784837920175">9784837920175</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784837920175">9784837920175</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="「体を温める」と病気は必ず治る">「体を温める」と病気は必ず治る</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="クスリをいっさい使わない“最善の内臓強化法”">クスリをいっさい使わない“最善の内臓強化法”</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="石原結實">石原結實</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="三笠書房">三笠書房</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="254">254</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2003-04">2003-04</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="「体を温める」と病気は必ず治る">복사</button>
+                <button type="button" class="copy-button" data-copy="「体を温める」と病気は必ず治る">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784531063857.jpg" download="9784531063857.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784531063857.jpg" alt="魂の記憶 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784531063857.jpg" download="9784531063857.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784531063857.jpg" alt="魂の記憶 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="魂の記憶">魂の記憶</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="宇宙はあなたのすべてを覚えている">宇宙はあなたのすべてを覚えている</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="喰代栄一">喰代栄一</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="日本教文社">日本教文社</button> · <button type="button" class="copy-text meta-year" data-copy="2003">2003</button> · <button type="button" class="copy-text meta-pages" data-copy="245">245쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784531063857">9784531063857</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784531063857">9784531063857</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="魂の記憶">魂の記憶</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="宇宙はあなたのすべてを覚えている">宇宙はあなたのすべてを覚えている</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="喰代栄一">喰代栄一</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="日本教文社">日本教文社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="245">245</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2003-06">2003-06</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 심리학">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 심리학</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="魂の記憶">복사</button>
+                <button type="button" class="copy-button" data-copy="魂の記憶">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784492222058.jpg" download="9784492222058.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784492222058.jpg" alt="数学嫌いな人のための数学 표지" width="328" height="475" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784492222058.jpg" download="9784492222058.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784492222058.jpg" alt="数学嫌いな人のための数学 표지" width="328" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="数学嫌いな人のための数学">数学嫌いな人のための数学</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="数学原論">数学原論</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="小室直樹">小室直樹</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="東洋経済新報社">東洋経済新報社</button> · <button type="button" class="copy-text meta-year" data-copy="2001">2001</button> · <button type="button" class="copy-text meta-pages" data-copy="330">330쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784492222058">9784492222058</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784492222058">9784492222058</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="数学嫌いな人のための数学">数学嫌いな人のための数学</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="数学原論">数学原論</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="小室直樹">小室直樹</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="東洋経済新報社">東洋経済新報社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="330">330</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2001-10">2001-10</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 일반">외국도서 &gt; 일본 도서 &gt; 일반</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="数学嫌いな人のための数学">복사</button>
+                <button type="button" class="copy-button" data-copy="数学嫌いな人のための数学">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784898310854.jpg" download="9784898310854.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784898310854.jpg" alt="日本国民に告ぐ 표지" width="335" height="500" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784898310854.jpg" download="9784898310854.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784898310854.jpg" alt="日本国民に告ぐ 표지" width="335" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="日本国民に告ぐ">日本国民に告ぐ</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="誇りなき国家は滅亡する">誇りなき国家は滅亡する</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="小室直樹">小室直樹</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="WAC">WAC</button> · <button type="button" class="copy-text meta-year" data-copy="2005">2005</button> · <button type="button" class="copy-text meta-pages" data-copy="357">357쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784898310854">9784898310854</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784898310854">9784898310854</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="日本国民に告ぐ">日本国民に告ぐ</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="誇りなき国家は滅亡する">誇りなき国家は滅亡する</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="小室直樹">小室直樹</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="ワック">ワック</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="357">357</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2005-12">2005-12</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="WAC">WAC</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="日本国民に告ぐ">복사</button>
+                <button type="button" class="copy-button" data-copy="日本国民に告ぐ">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784152091642.jpg" download="9784152091642.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784152091642.jpg" alt="繁栄（上） 표지" width="500" height="724" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784152091642.jpg" download="9784152091642.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784152091642.jpg" alt="繁栄（上） 표지" width="500" height="724" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="繁栄（上）">繁栄（上）</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="明日を切り拓くための人類10万年史">明日を切り拓くための人類10万年史</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="マット・リドレー／大田直子・鍛原多惠子・柴田裕之 訳">マット・リドレー／大田直子・鍛原多惠子・柴田裕之 訳</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="早川書房">早川書房</button> · <button type="button" class="copy-text meta-year" data-copy="2010">2010</button> · <button type="button" class="copy-text meta-pages" data-copy="291">291쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784152091642">9784152091642</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784152091642">9784152091642</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="繁栄（上）">繁栄（上）</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="明日を切り拓くための人類10万年史">明日を切り拓くための人類10万年史</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="マット・リドレー／大田直子・鍛原多惠子・柴田裕之 訳">マット・リドレー／大田直子・鍛原多惠子・柴田裕之 訳</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="早川書房">早川書房</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="291">291</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2010-10">2010-10</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span><span class="badge badge-price">알라딘 정가 21,700원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="繁栄（上）">복사</button>
+                <button type="button" class="copy-button" data-copy="繁栄（上）">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784072460504.jpg" download="9784072460504.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784072460504.jpg" alt="要約力 표지" width="387" height="555" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784072460504.jpg" download="9784072460504.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784072460504.jpg" alt="要約力 표지" width="387" height="555" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="要約力">要約力</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="書く、読む、話す すべての能力は「要約力」で決まる！">書く、読む、話す すべての能力は「要約力」で決まる！</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="轡田隆史">轡田隆史</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="主婦の友社">主婦の友社</button> · <button type="button" class="copy-text meta-year" data-copy="2005">2005</button> · <button type="button" class="copy-text meta-pages" data-copy="223">223쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784072460504">9784072460504</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784072460504">9784072460504</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="要約力">要約力</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="書く、読む、話す すべての能力は「要約力」で決まる！">書く、読む、話す すべての能力は「要約力」で決まる！</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="轡田隆史">轡田隆史</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="主婦の友社">主婦の友社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="223">223</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2005-05">2005-05</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 자기계발/처세">외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 자기계발/처세</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="要約力">복사</button>
+                <button type="button" class="copy-button" data-copy="要約力">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784270000977.jpg" download="9784270000977.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784270000977.jpg" alt="ホーキング、宇宙のすべてを語る 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784270000977.jpg" download="9784270000977.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784270000977.jpg" alt="ホーキング、宇宙のすべてを語る 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="ホーキング、宇宙のすべてを語る">ホーキング、宇宙のすべてを語る</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="スティーヴン・ホーキング／レナード・ムロディナウ／佐藤勝彦 訳">スティーヴン・ホーキング／レナード・ムロディナウ／佐藤勝彦 訳</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="ランダムハウス講談社">ランダムハウス講談社</button> · <button type="button" class="copy-text meta-year" data-copy="2005">2005</button> · <button type="button" class="copy-text meta-pages" data-copy="252">252쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784270000977">9784270000977</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784270000977">9784270000977</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="ホーキング、宇宙のすべてを語る">ホーキング、宇宙のすべてを語る</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="スティーヴン・ホーキング／レナード・ムロディナウ／佐藤勝彦 訳">スティーヴン・ホーキング／レナード・ムロディナウ／佐藤勝彦 訳</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="ランダムハウス講談社">ランダムハウス講談社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="252">252</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2005-09">2005-09</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 일반">외국도서 &gt; 일본 도서 &gt; 일반</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="ホーキング、宇宙のすべてを語る">복사</button>
+                <button type="button" class="copy-button" data-copy="ホーキング、宇宙のすべてを語る">제목 복사</button>
               </td>
             </tr>
           </tbody>
@@ -330,8 +371,7 @@
             <tr>
               <th scope="col" class="col-no">번호</th>
               <th scope="col" class="col-cover">표지</th>
-              <th scope="col" class="col-title">제목</th>
-              <th scope="col" class="col-meta">저자 · 출판사</th>
+              <th scope="col" class="col-info">책 정보 <span class="th-hint">— 글자를 누르면 그 항목만 복사됩니다</span></th>
               <th scope="col" class="col-copy">복사</th>
             </tr>
           </thead>
@@ -339,425 +379,511 @@
             <tr>
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784062579377.jpg" download="9784062579377.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062579377.jpg" alt="輪廻する宇宙 표지" width="500" height="774" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784062579377.jpg" download="9784062579377.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062579377.jpg" alt="輪廻する宇宙 표지" width="500" height="774" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="輪廻する宇宙">輪廻する宇宙</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="ダークエネルギーに満ちた宇宙の将来">ダークエネルギーに満ちた宇宙の将来</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="横山順一">横山順一</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="講談社ブルーバックス">講談社ブルーバックス</button> · <button type="button" class="copy-text meta-year" data-copy="2015">2015</button> · <button type="button" class="copy-text meta-pages" data-copy="206">206쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784062579377">9784062579377</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784062579377">9784062579377</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="輪廻する宇宙">輪廻する宇宙</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="ダークエネルギーに満ちた宇宙の将来">ダークエネルギーに満ちた宇宙の将来</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="横山順一">横山順一</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="講談社">講談社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="206">206</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2015-10">2015-10</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="講談社ブルーバックス">講談社ブルーバックス</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 일반">외국도서 &gt; 일본 도서 &gt; 일반</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 10,370원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="輪廻する宇宙">복사</button>
+                <button type="button" class="copy-button" data-copy="輪廻する宇宙">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784569698250.jpg" download="9784569698250.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569698250.jpg" alt="［新訳］ローマ帝国衰亡史（下） 표지" width="396" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784569698250.jpg" download="9784569698250.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569698250.jpg" alt="［新訳］ローマ帝国衰亡史（下） 표지" width="396" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="［新訳］ローマ帝国衰亡史（下）">［新訳］ローマ帝国衰亡史（下）</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="エドワード・ギボン／中倉玄喜 編訳">エドワード・ギボン／中倉玄喜 編訳</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="PHP研究所">PHP研究所</button> · <button type="button" class="copy-text meta-year" data-copy="2008">2008</button> · <button type="button" class="copy-text meta-pages" data-copy="365">365쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784569698250">9784569698250</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784569698250">9784569698250</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="［新訳］ローマ帝国衰亡史（下）">［新訳］ローマ帝国衰亡史（下）</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="エドワード・ギボン／中倉玄喜 編訳">エドワード・ギボン／中倉玄喜 編訳</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="PHP研究所">PHP研究所</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="365">365</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2008-03">2008-03</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 11,450원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="［新訳］ローマ帝国衰亡史（下）">복사</button>
+                <button type="button" class="copy-button" data-copy="［新訳］ローマ帝国衰亡史（下）">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087205091.jpg" download="9784087205091.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087205091.jpg" alt="リーダーは半歩前を歩け 표지" width="500" height="803" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087205091.jpg" download="9784087205091.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087205091.jpg" alt="リーダーは半歩前を歩け 표지" width="500" height="803" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="リーダーは半歩前を歩け">リーダーは半歩前を歩け</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="金大中というヒント">金大中というヒント</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="姜尚中">姜尚中</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="集英社新書 0509A">集英社新書 0509A</button> · <button type="button" class="copy-text meta-year" data-copy="2009">2009</button> · <button type="button" class="copy-text meta-pages" data-copy="198">198쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784087205091">9784087205091</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784087205091">9784087205091</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="リーダーは半歩前を歩け">リーダーは半歩前を歩け</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="金大中というヒント">金大中というヒント</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="姜尚中">姜尚中</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="集英社">集英社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="198">198</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2009-09">2009-09</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="集英社新書 0509A">集英社新書 0509A</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학 &gt; 금융">외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학 &gt; 금융</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 8,440원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="リーダーは半歩前を歩け">복사</button>
+                <button type="button" class="copy-button" data-copy="リーダーは半歩前を歩け">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784344984820.jpg" download="9784344984820.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784344984820.jpg" alt="寿命の9割は腸で決まる 표지" width="500" height="793" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784344984820.jpg" download="9784344984820.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784344984820.jpg" alt="寿命の9割は腸で決まる 표지" width="500" height="793" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="寿命の9割は腸で決まる">寿命の9割は腸で決まる</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="松生恒夫">松生恒夫</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="幻冬舎新書 481">幻冬舎新書 481</button> · <button type="button" class="copy-text meta-year" data-copy="2018">2018</button> · <button type="button" class="copy-text meta-pages" data-copy="173">173쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784344984820">9784344984820</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784344984820">9784344984820</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="寿命の9割は腸で決まる">寿命の9割は腸で決まる</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="松生恒夫">松生恒夫</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="幻冬舎">幻冬舎</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="173">173</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2018-01">2018-01</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="幻冬舎新書 481">幻冬舎新書 481</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="寿命の9割は腸で決まる">복사</button>
+                <button type="button" class="copy-button" data-copy="寿命の9割は腸で決まる">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="古代史 不都合な真実">古代史 不都合な真実</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="12の古代文書が暴く「日本書紀」の嘘">12の古代文書が暴く「日本書紀」の嘘</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="関裕二">関裕二</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="じっぴコンパクト新書 342（実業之日本社）">じっぴコンパクト新書 342（実業之日本社）</button> · <button type="button" class="copy-text meta-year" data-copy="2018">2018</button> · <button type="button" class="copy-text meta-pages" data-copy="207">207쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784408337647">9784408337647</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784408337647">9784408337647</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="古代史 不都合な真実">古代史 不都合な真実</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="12の古代文書が暴く「日本書紀」の嘘">12の古代文書が暴く「日本書紀」の嘘</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="関裕二">関裕二</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="実業之日本社">実業之日本社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="207">207</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2018-01">2018-01</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="じっぴコンパクト新書 342（実業之日本社）">じっぴコンパクト新書 342（実業之日本社）</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="古代史 不都合な真実">복사</button>
+                <button type="button" class="copy-button" data-copy="古代史 不都合な真実">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121018625.jpg" download="9784121018625.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121018625.jpg" alt="入門！論理学 표지" width="436" height="682" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121018625.jpg" download="9784121018625.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121018625.jpg" alt="入門！論理学 표지" width="436" height="682" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="入門！論理学">入門！論理学</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="野矢茂樹">野矢茂樹</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="中公新書 1862">中公新書 1862</button> · <button type="button" class="copy-text meta-year" data-copy="2006">2006</button> · <button type="button" class="copy-text meta-pages" data-copy="250">250쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784121018625">9784121018625</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784121018625">9784121018625</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="入門！論理学">入門！論理学</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="野矢茂樹">野矢茂樹</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="中央公論新社">中央公論新社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="250">250</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2006-09">2006-09</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="中公新書 1862">中公新書 1862</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 교육학">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 교육학</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 8,920원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="入門！論理学">복사</button>
+                <button type="button" class="copy-button" data-copy="入門！論理学">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="古代史 不都合な真実">古代史 不都合な真実</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="関裕二">関裕二</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="じっぴコンパクト新書 342（実業之日本社）">じっぴコンパクト新書 342（実業之日本社）</button> · <button type="button" class="copy-text meta-year" data-copy="2018">2018</button> · <button type="button" class="copy-text meta-pages" data-copy="207">207쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784408337647">9784408337647</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784408337647">9784408337647</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="古代史 不都合な真実">古代史 不都合な真実</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="関裕二">関裕二</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="実業之日本社">実業之日本社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="207">207</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2018-01">2018-01</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="じっぴコンパクト新書 342（実業之日本社）">じっぴコンパクト新書 342（実業之日本社）</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="古代史 不都合な真実">복사</button>
+                <button type="button" class="copy-button" data-copy="古代史 不都合な真実">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784569704135.jpg" download="9784569704135.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569704135.jpg" alt="［新訳］十八史略 표지" width="392" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784569704135.jpg" download="9784569704135.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784569704135.jpg" alt="［新訳］十八史略 표지" width="392" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="［新訳］十八史略">［新訳］十八史略</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="人と組織を活かすリーダーのための百言百話">人と組織を活かすリーダーのための百言百話</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="村山孚 編訳">村山孚 編訳</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="PHP研究所">PHP研究所</button> · <button type="button" class="copy-text meta-year" data-copy="2009">2009</button> · <button type="button" class="copy-text meta-pages" data-copy="236">236쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784569704135">9784569704135</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784569704135">9784569704135</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="［新訳］十八史略">［新訳］十八史略</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="人と組織を活かすリーダーのための百言百話">人と組織を活かすリーダーのための百言百話</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="村山孚 編訳">村山孚 編訳</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="PHP研究所">PHP研究所</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="236">236</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2009-02">2009-02</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="［新訳］十八史略">복사</button>
+                <button type="button" class="copy-button" data-copy="［新訳］十八史略">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784106107474.jpg" download="9784106107474.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784106107474.jpg" alt="血圧と心臓が気になる人のための本 표지" width="500" height="680" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784106107474.jpg" download="9784106107474.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784106107474.jpg" alt="血圧と心臓が気になる人のための本 표지" width="500" height="680" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="血圧と心臓が気になる人のための本">血圧と心臓が気になる人のための本</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="古川哲史">古川哲史</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="新潮新書 747">新潮新書 747</button> · <button type="button" class="copy-text meta-year" data-copy="2017">2017</button> · <button type="button" class="copy-text meta-pages" data-copy="254">254쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784106107474">9784106107474</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784106107474">9784106107474</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="血圧と心臓が気になる人のための本">血圧と心臓が気になる人のための本</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="古川哲史">古川哲史</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="新潮社">新潮社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="254">254</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2017-12">2017-12</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="新潮新書 747">新潮新書 747</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="血圧と心臓が気になる人のための本">복사</button>
+                <button type="button" class="copy-button" data-copy="血圧と心臓が気になる人のための本">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784166611508.jpg" download="9784166611508.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784166611508.jpg" alt="大日本史 표지" width="500" height="797" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784166611508.jpg" download="9784166611508.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784166611508.jpg" alt="大日本史 표지" width="500" height="797" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="大日本史">大日本史</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="山内昌之・佐藤優">山内昌之・佐藤優</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="文春新書 1150">文春新書 1150</button> · <button type="button" class="copy-text meta-year" data-copy="2017">2017</button> · <button type="button" class="copy-text meta-pages" data-copy="248">248쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784166611508">9784166611508</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784166611508">9784166611508</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="大日本史">大日本史</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="山内昌之・佐藤優">山内昌之・佐藤優</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="文藝春秋">文藝春秋</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="248">248</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2017-12">2017-12</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="文春新書 1150">文春新書 1150</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="大日本史">복사</button>
+                <button type="button" class="copy-button" data-copy="大日本史">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784140884188.jpg" download="9784140884188.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140884188.jpg" alt="保守とは何だろうか 표지" width="416" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784140884188.jpg" download="9784140884188.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140884188.jpg" alt="保守とは何だろうか 표지" width="416" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="保守とは何だろうか">保守とは何だろうか</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="中野剛志">中野剛志</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="NHK出版新書 418">NHK出版新書 418</button> · <button type="button" class="copy-text meta-year" data-copy="2013">2013</button> · <button type="button" class="copy-text meta-pages" data-copy="253">253쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784140884188">9784140884188</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784140884188">9784140884188</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="保守とは何だろうか">保守とは何だろうか</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="中野剛志">中野剛志</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="NHK出版">NHK出版</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="253">253</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2013-10">2013-10</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="NHK出版新書 418">NHK出版新書 418</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="保守とは何だろうか">복사</button>
+                <button type="button" class="copy-button" data-copy="保守とは何だろうか">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784334037444.jpg" download="9784334037444.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784334037444.jpg" alt="アゴを引けば身体が変わる 표지" width="386" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784334037444.jpg" download="9784334037444.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784334037444.jpg" alt="アゴを引けば身体が変わる 표지" width="386" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="アゴを引けば身体が変わる">アゴを引けば身体が変わる</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="腰痛・肩こり・頭痛が消える大人の体育">腰痛・肩こり・頭痛が消える大人の体育</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="伊藤和磨">伊藤和磨</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="光文社新書 641">光文社新書 641</button> · <button type="button" class="copy-text meta-year" data-copy="2013">2013</button> · <button type="button" class="copy-text meta-pages" data-copy="238">238쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784334037444">9784334037444</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784334037444">9784334037444</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="アゴを引けば身体が変わる">アゴを引けば身体が変わる</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="腰痛・肩こり・頭痛が消える大人の体育">腰痛・肩こり・頭痛が消える大人の体育</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="伊藤和磨">伊藤和磨</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="光文社">光文社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="238">238</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2013-05">2013-05</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="光文社新書 641">光文社新書 641</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="アゴを引けば身体が変わる">복사</button>
+                <button type="button" class="copy-button" data-copy="アゴを引けば身体が変わる">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">13</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="「歴史認識」とは何か">「歴史認識」とは何か</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="対立の構図を超えて">対立の構図を超えて</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="大沼保昭／江川紹子 聞き手">大沼保昭／江川紹子 聞き手</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="中公新書 2332">中公新書 2332</button> · <button type="button" class="copy-text meta-year" data-copy="2015">2015</button> · <button type="button" class="copy-text meta-pages" data-copy="254">254쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784121023322">9784121023322</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784121023322">9784121023322</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="「歴史認識」とは何か">「歴史認識」とは何か</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="対立の構図を超えて">対立の構図を超えて</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="大沼保昭／江川紹子 聞き手">大沼保昭／江川紹子 聞き手</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="中央公論新社">中央公論新社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="254">254</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2015-07">2015-07</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="中公新書 2332">中公新書 2332</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="「歴史認識」とは何か">복사</button>
+                <button type="button" class="copy-button" data-copy="「歴史認識」とは何か">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">14</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784584124703.jpg" download="9784584124703.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784584124703.jpg" alt="余剰の時代 표지" width="500" height="730" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784584124703.jpg" download="9784584124703.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784584124703.jpg" alt="余剰の時代 표지" width="500" height="730" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="余剰の時代">余剰の時代</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="副島隆彦">副島隆彦</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="ベスト新書 470">ベスト新書 470</button> · <button type="button" class="copy-text meta-year" data-copy="2015">2015</button> · <button type="button" class="copy-text meta-pages" data-copy="205">205쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784584124703">9784584124703</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784584124703">9784584124703</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="余剰の時代">余剰の時代</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="副島隆彦">副島隆彦</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="KKベストセラーズ">KKベストセラーズ</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="205">205</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2015-03">2015-03</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="ベスト新書 470">ベスト新書 470</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 경제/경영 &gt; 경제학 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="余剰の時代">복사</button>
+                <button type="button" class="copy-button" data-copy="余剰の時代">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">15</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="「歴史認識」とは何か">「歴史認識」とは何か</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="大沼保昭／江川紹子 聞き手">大沼保昭／江川紹子 聞き手</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="中公新書 2332">中公新書 2332</button> · <button type="button" class="copy-text meta-year" data-copy="2015">2015</button> · <button type="button" class="copy-text meta-pages" data-copy="254">254쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784121023322">9784121023322</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784121023322">9784121023322</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="「歴史認識」とは何か">「歴史認識」とは何か</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="大沼保昭／江川紹子 聞き手">大沼保昭／江川紹子 聞き手</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="中央公論新社">中央公論新社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="254">254</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2015-07">2015-07</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="中公新書 2332">中公新書 2332</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="「歴史認識」とは何か">복사</button>
+                <button type="button" class="copy-button" data-copy="「歴史認識」とは何か">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">16</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784797346596.jpg" download="9784797346596.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784797346596.jpg" alt="脳がどんどん若返る生活習慣 표지" width="500" height="808" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784797346596.jpg" download="9784797346596.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784797346596.jpg" alt="脳がどんどん若返る生活習慣 표지" width="500" height="808" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="脳がどんどん若返る生活習慣">脳がどんどん若返る生活習慣</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="米山公啓">米山公啓</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="ソフトバンク新書 083">ソフトバンク新書 083</button> · <button type="button" class="copy-text meta-year" data-copy="2008">2008</button> · <button type="button" class="copy-text meta-pages" data-copy="166">166쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784797346596">9784797346596</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784797346596">9784797346596</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="脳がどんどん若返る生活習慣">脳がどんどん若返る生活習慣</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="米山公啓">米山公啓</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="ソフトバンククリエイティブ">ソフトバンククリエイティブ</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="166">166</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2008-08">2008-08</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="ソフトバンク新書 083">ソフトバンク新書 083</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활 · 문고/신서</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="脳がどんどん若返る生活習慣">복사</button>
+                <button type="button" class="copy-button" data-copy="脳がどんどん若返る生活習慣">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">17</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784140885178.jpg" download="9784140885178.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140885178.jpg" alt="「司馬遼太郎」で学ぶ日本史 표지" width="500" height="777" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784140885178.jpg" download="9784140885178.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784140885178.jpg" alt="「司馬遼太郎」で学ぶ日本史 표지" width="500" height="777" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="「司馬遼太郎」で学ぶ日本史">「司馬遼太郎」で学ぶ日本史</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="磯田道史">磯田道史</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="NHK出版新書 517">NHK出版新書 517</button> · <button type="button" class="copy-text meta-year" data-copy="2017">2017</button> · <button type="button" class="copy-text meta-pages" data-copy="187">187쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784140885178">9784140885178</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784140885178">9784140885178</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="「司馬遼太郎」で学ぶ日本史">「司馬遼太郎」で学ぶ日本史</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="磯田道史">磯田道史</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="NHK出版">NHK出版</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="187">187</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2017-05">2017-05</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="NHK出版新書 517">NHK出版新書 517</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 역사/지리 &gt; 역사</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 9,400원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="「司馬遼太郎」で学ぶ日本史">복사</button>
+                <button type="button" class="copy-button" data-copy="「司馬遼太郎」で学ぶ日本史">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">18</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784062728447.jpg" download="9784062728447.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062728447.jpg" alt="高血圧はほっとくのが一番 표지" width="500" height="760" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784062728447.jpg" download="9784062728447.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784062728447.jpg" alt="高血圧はほっとくのが一番 표지" width="500" height="760" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="高血圧はほっとくのが一番">高血圧はほっとくのが一番</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="実はあなたも正常値!?">実はあなたも正常値!?</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="松本光正">松本光正</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="講談社＋α新書 651-1B">講談社＋α新書 651-1B</button> · <button type="button" class="copy-text meta-year" data-copy="2014">2014</button> · <button type="button" class="copy-text meta-pages" data-copy="187">187쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784062728447">9784062728447</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784062728447">9784062728447</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="高血圧はほっとくのが一番">高血圧はほっとくのが一番</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="実はあなたも正常値!?">実はあなたも正常値!?</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="松本光正">松本光正</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="講談社">講談社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="187">187</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2014-04">2014-04</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="講談社＋α新書 651-1B">講談社＋α新書 651-1B</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 10,130원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="高血圧はほっとくのが一番">복사</button>
+                <button type="button" class="copy-button" data-copy="高血圧はほっとくのが一番">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">19</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087727838.jpg" download="9784087727838.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087727838.jpg" alt="もものかんづめ 표지" width="500" height="699" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087727838.jpg" download="9784087727838.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087727838.jpg" alt="もものかんづめ 표지" width="500" height="699" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="もものかんづめ">もものかんづめ</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="さくらももこ">さくらももこ</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="集英社">集英社</button> · <button type="button" class="copy-text meta-year" data-copy="1991">1991</button> · <button type="button" class="copy-text meta-pages" data-copy="235">235쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784087727838">9784087727838</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784087727838">9784087727838</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="もものかんづめ">もものかんづめ</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="さくらももこ">さくらももこ</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="集英社">集英社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="235">235</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="1991-03">1991-03</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 문학">외국도서 &gt; 일본 도서 &gt; 문학</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 9,920원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="もものかんづめ">복사</button>
+                <button type="button" class="copy-button" data-copy="もものかんづめ">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">20</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784905706342.jpg" download="9784905706342.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784905706342.jpg" alt="石原結實の絶対健康法 표지" width="500" height="745" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784905706342.jpg" download="9784905706342.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784905706342.jpg" alt="石原結實の絶対健康法 표지" width="500" height="745" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="石原結實の絶対健康法">石原結實の絶対健康法</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="生活習慣から心と体のズレをなくせ">生活習慣から心と体のズレをなくせ</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="石原結實">石原結實</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="教育評論社">教育評論社</button> · <button type="button" class="copy-text meta-year" data-copy="2009">2009</button> · <button type="button" class="copy-text meta-pages" data-copy="190">190쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784905706342">9784905706342</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784905706342">9784905706342</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="石原結實の絶対健康法">石原結實の絶対健康法</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="生活習慣から心と体のズレをなくせ">生活習慣から心と体のズレをなくせ</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="石原結實">石原結實</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="教育評論社">教育評論社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="190">190</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2009-01">2009-01</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 실용/취미/생활">외국도서 &gt; 일본 도서 &gt; 실용/취미/생활</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="石原結實の絶対健康法">복사</button>
+                <button type="button" class="copy-button" data-copy="石原結實の絶対健康法">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">21</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784250201028.jpg" download="9784250201028.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784250201028.jpg" alt="自由のパラドックスと弁証法 표지" width="321" height="475" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784250201028.jpg" download="9784250201028.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784250201028.jpg" alt="自由のパラドックスと弁証法 표지" width="321" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="自由のパラドックスと弁証法">自由のパラドックスと弁証法</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="シリーズ「現代批判の哲学」">シリーズ「現代批判の哲学」</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="牧野広義">牧野広義</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="青木書店">青木書店</button> · <button type="button" class="copy-text meta-year" data-copy="2001">2001</button> · <button type="button" class="copy-text meta-pages" data-copy="222">222쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784250201028">9784250201028</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784250201028">9784250201028</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="自由のパラドックスと弁証法">自由のパラドックスと弁証法</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="牧野広義">牧野広義</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="青木書店">青木書店</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="222">222</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2001-01">2001-01</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="シリーズ「現代批判の哲学」">シリーズ「現代批判の哲学」</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-new">알라딘에 없음 · 직접 등록</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="自由のパラドックスと弁証法">복사</button>
+                <button type="button" class="copy-button" data-copy="自由のパラドックスと弁証法">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">22</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784901318631.jpg" download="9784901318631.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784901318631.jpg" alt="見えない世界の摩訶不思議 표지" width="439" height="640" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784901318631.jpg" download="9784901318631.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784901318631.jpg" alt="見えない世界の摩訶不思議 표지" width="439" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="見えない世界の摩訶不思議">見えない世界の摩訶不思議</button>
-                <button type="button" class="copy-text jp-sub" lang="ja" data-copy="生きることの素晴らしさを伝えたい">生きることの素晴らしさを伝えたい</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="中丸薫">中丸薫</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="あ・うん">あ・うん</button> · <button type="button" class="copy-text meta-year" data-copy="2008">2008</button> · <button type="button" class="copy-text meta-pages" data-copy="222">222쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784901318631">9784901318631</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784901318631">9784901318631</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="見えない世界の摩訶不思議">見えない世界の摩訶不思議</button></dd></div>
+                  <div class="field"><dt class="field-label">부제</dt><dd class="field-body"><button type="button" class="field-value copy-text field-sub" lang="ja" data-copy="生きることの素晴らしさを伝えたい">生きることの素晴らしさを伝えたい</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="中丸薫">中丸薫</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="あ・うん">あ・うん</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="222">222</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2008-01">2008-01</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 교육학">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 교육학</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 16,880원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="見えない世界の摩訶不思議">복사</button>
+                <button type="button" class="copy-button" data-copy="見えない世界の摩訶不思議">제목 복사</button>
               </td>
             </tr>
             <tr>
               <td class="col-no" data-label="번호">23</td>
               <td class="col-cover" data-label="표지">
-                <a class="cover-save" href="photos/covers/9784087204445.jpg" download="9784087204445.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087204445.jpg" alt="悩む力 표지" width="500" height="813" loading="lazy" decoding="async"><span class="cover-save-label">저장</span></a>
+                <a class="cover-save" href="photos/covers/9784087204445.jpg" download="9784087204445.jpg" title="누르면 표지 사진이 저장됩니다"><img src="photos/covers/9784087204445.jpg" alt="悩む力 표지" width="500" height="813" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
               </td>
-              <td class="col-title" data-label="제목">
-                <button type="button" class="copy-text jp-title" lang="ja" data-copy="悩む力">悩む力</button>
-              </td>
-              <td class="col-meta" data-label="저자 · 출판사">
-                <button type="button" class="copy-text meta-author" lang="ja" data-copy="姜尚中">姜尚中</button>
-                <span class="meta-sub"><button type="button" class="copy-text meta-pub" lang="ja" data-copy="集英社新書 444C">集英社新書 444C</button> · <button type="button" class="copy-text meta-year" data-copy="2008">2008</button> · <button type="button" class="copy-text meta-pages" data-copy="190">190쪽</button></span>
-              
-                <span class="isbn-line">ISBN <button type="button" class="copy-text meta-isbn" data-copy="9784087204445">9784087204445</button></span>
+              <td class="col-info" data-label="책 정보">
+                <dl class="fields">
+                  <div class="field"><dt class="field-label">ISBN</dt><dd class="field-body"><button type="button" class="field-value copy-text field-isbn" data-copy="9784087204445">9784087204445</button></dd></div>
+                  <div class="field"><dt class="field-label">도서명</dt><dd class="field-body"><button type="button" class="field-value copy-text field-title" lang="ja" data-copy="悩む力">悩む力</button></dd></div>
+                  <div class="field"><dt class="field-label">저자</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="姜尚中">姜尚中</button></dd></div>
+                  <div class="field"><dt class="field-label">출판사</dt><dd class="field-body"><button type="button" class="field-value copy-text" lang="ja" data-copy="集英社">集英社</button></dd></div>
+                  <div class="field"><dt class="field-label">페이지</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="190">190</button></dd></div>
+                  <div class="field"><dt class="field-label">출간일</dt><dd class="field-body"><button type="button" class="field-value copy-text" data-copy="2008-05">2008-05</button></dd></div>
+                  <div class="field"><dt class="field-label">총서</dt><dd class="field-body"><button type="button" class="field-value copy-text field-series" lang="ja" data-copy="集英社新書 444C">集英社新書 444C</button></dd></div>
+                  <div class="field"><dt class="field-label">분류</dt><dd class="field-body"><button type="button" class="field-value copy-text field-cat" data-copy="외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리">외국도서 &gt; 일본 도서 &gt; 인문/사회/논픽션 &gt; 철학/사상/윤리</button></dd></div>
+                </dl>
+                  <p class="badges"><span class="badge badge-have">알라딘에 있음 · ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 10,610원</span></p>
               </td>
               <td class="col-copy" data-label="복사">
-                <button type="button" class="copy-button" data-copy="悩む力">복사</button>
+                <button type="button" class="copy-button" data-copy="悩む力">제목 복사</button>
               </td>
             </tr>
           </tbody>
@@ -783,6 +909,6 @@
       </footer>
     </main>
 
-    <script src="src/books.js?v=2"></script>
+    <script src="src/books.js?v=3"></script>
   </body>
 </html>

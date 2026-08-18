@@ -79,12 +79,12 @@
 /* ---------- 표지 ---------- */
 /* 앞표지는 실물 확인용이다. 화면에서 제목보다 커지지 않게 폭을 고정한다. */
 .col-cover {
-  width: 88px;
+  width: 168px;
 }
 
 .col-cover img {
   display: block;
-  width: 72px;
+  width: 152px;
   height: auto;
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -155,16 +155,15 @@
 /* ---------- 표지: 누르면 사진이 저장된다 ---------- */
 .cover-save {
   display: block;
-  position: relative;
-  width: 72px;
+  width: 152px;
   text-decoration: none;
 }
 
 .cover-save-label {
   display: block;
-  margin-top: 3px;
+  margin-top: 5px;
   color: var(--brand-strong);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-align: center;
 }
@@ -202,6 +201,115 @@
   color: var(--brand-strong);
 }
 
+/* ---------- 항목별 정보 ---------- */
+/* 알라딘 상품 등록 화면의 칸 순서와 칸 이름을 그대로 따른다.
+   위에서 아래로 읽으면서 그대로 옮겨 적을 수 있어야 한다. */
+.fields {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 2px 12px;
+  margin: 0;
+}
+
+.field {
+  display: contents;
+}
+
+.field-label {
+  margin: 0;
+  padding-top: 2px;
+  color: var(--text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.field-body {
+  margin: 0;
+  min-width: 0;
+}
+
+.field-value {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.field-title {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.field-isbn {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.field-sub,
+.field-series {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.th-hint {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---------- 상태 배지 ---------- */
+/* 알라딘에 이미 있는 책은 ISBN 검색만으로 끝나고, 없는 책은 손으로 다 넣어야 한다.
+   작업량이 완전히 다르므로 행에서 바로 구분되게 한다. */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 9px 0 0;
+}
+
+.badge {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.badge-have {
+  background: #d8f0e2;
+  color: #135f37;
+}
+
+.badge-new {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.badge-guess {
+  background: #fdf0d5;
+  color: #7a5510;
+}
+
+.badge-price {
+  background: var(--brand-tint);
+  color: var(--brand-strong);
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-have {
+    background: #17402c;
+    color: #93dcb4;
+  }
+
+  .badge-guess {
+    background: #40320f;
+    color: #e8c579;
+  }
+}
+
+.field-cat {
+  font-size: 14px;
+}
+
 /* ---------- 표 ---------- */
 .book-table {
   width: 100%;
@@ -235,7 +343,7 @@
 }
 
 .col-copy {
-  width: 96px;
+  width: 120px;
   text-align: right;
 }
 
@@ -261,9 +369,10 @@
 
 /* 판(printing)이 갈려 실물 판권장 확인이 필요한 항목 */
 .check-note {
+  margin: 8px 0 0;
   color: var(--danger);
+  font-size: 13px;
   font-weight: 600;
-  white-space: nowrap;
 }
 
 .meta-sub {
@@ -304,6 +413,7 @@
 /* ---------- 복사 버튼 ---------- */
 .copy-button {
   min-width: 84px;
+  white-space: nowrap;
   min-height: 44px;
   padding: 0 16px;
   border: none;
@@ -376,6 +486,15 @@
     border-radius: 12px;
   }
 
+  /* 좁은 화면에서는 표지를 위에 크게 두고 항목을 그 아래로 흘린다. */
+  .col-cover {
+    margin: 4px 0 10px;
+  }
+
+  .fields {
+    gap: 3px 10px;
+  }
+
   .book-table td {
     padding: 0;
     border-bottom: none;
@@ -393,23 +512,9 @@
   }
 
   /* 좁은 화면에서는 표지를 카드 오른쪽 위에 띄운다. */
-  .book-table tr {
-    padding-right: 96px;
-  }
-
-  .col-cover {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    width: auto;
-  }
-
-  .col-cover img {
-    width: 68px;
-  }
-
+  .col-cover img,
   .cover-save {
-    width: 68px;
+    width: 148px;
   }
 
   .howto {
