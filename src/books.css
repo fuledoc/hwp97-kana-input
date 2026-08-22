@@ -31,11 +31,6 @@
   outline-offset: 2px;
 }
 
-.books-feedback {
-  padding: 12px 22px 0;
-  margin: 0;
-}
-
 /* ---------- 서가 묶음 ---------- */
 .booklist {
   padding: 8px 22px 4px;
@@ -308,6 +303,62 @@
   font-weight: 400;
 }
 
+/* ---------- 복사 알림 ---------- */
+/* 누른 자리 바로 위에 잠깐 떴다 사라진다. 화면 위쪽 안내줄만으로는
+   목록을 내려 보는 중에 복사됐는지 알 수 없다. */
+.copy-toast {
+  position: fixed;
+  z-index: 50;
+  top: -999px;
+  left: -999px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #1f9d57;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.28);
+}
+
+.copy-toast.is-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.copy-toast.is-error {
+  background: var(--danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-toast {
+    transition: opacity 140ms ease;
+    transform: none;
+  }
+
+  .copy-toast.is-on {
+    transform: none;
+  }
+}
+
+/* ---------- 정가 ---------- */
+.field-price {
+  font-size: 15px;
+}
+
+.price-krw {
+  color: var(--text-muted);
+}
+
+.price-basis {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
 /* ---------- 상태 배지 ---------- */
 /* 알라딘에 이미 있는 책은 ISBN 검색만으로 끝나고, 없는 책은 손으로 다 넣어야 한다.
    작업량이 완전히 다르므로 행에서 바로 구분되게 한다. */
@@ -395,11 +446,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-.col-copy {
-  width: 120px;
-  text-align: right;
-}
-
 .jp-title {
   display: block;
   font-size: 21px;
@@ -461,45 +507,6 @@
 
 .unread-row .jp-sub {
   font-size: 14px;
-}
-
-/* ---------- 복사 버튼 ---------- */
-.copy-button {
-  min-width: 84px;
-  white-space: nowrap;
-  min-height: 44px;
-  padding: 0 16px;
-  border: none;
-  border-radius: 10px;
-  background: var(--brand);
-  color: var(--on-brand);
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.copy-button:hover {
-  background: var(--brand-strong);
-}
-
-.copy-button:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
-
-.copy-button.is-success {
-  background: #1f9d57;
-}
-
-.copy-button.is-error {
-  background: var(--danger);
-}
-
-.copy-button[disabled] {
-  background: var(--surface-muted);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  cursor: not-allowed;
 }
 
 .books-note {
@@ -575,13 +582,4 @@
     margin: 0 14px 4px;
   }
 
-  .col-copy {
-    margin-top: 12px;
-    text-align: left;
-  }
-
-  .copy-button {
-    width: 100%;
-    min-height: 48px;
-  }
-}
+    }

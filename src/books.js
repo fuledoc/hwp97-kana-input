@@ -1,9 +1,10 @@
-/* 책 목록 페이지: 제목별 복사 버튼과, 글자를 눌러 바로 복사하는 기능.
-   알라딘 상품 등록 화면의 각 칸에 하나씩 붙여넣는 용도라 항목별로 따로 복사한다.
+/* 책 목록 페이지: 글자를 눌러 항목별로 복사한다.
+   알라딘 상품 등록 화면의 칸에 하나씩 붙여넣는 용도라 항목을 나눠 둔다.
    입력기 본체(app.js)와 상태를 공유하지 않는 독립 스크립트다. */
 
-const feedback = document.querySelector("#bookFeedback");
-const resetTimers = new WeakMap();
+const TOAST_MS = 1100;
+let toastEl = null;
+let toastTimer = 0;
 
 function legacyCopyText(text) {
   if (typeof document.execCommand !== "function") {
@@ -41,73 +42,56 @@ async function copyText(text) {
   return legacyCopyText(text);
 }
 
-function showResult(button, title, copied) {
-  const previous = resetTimers.get(button);
-  if (previous) {
-    clearTimeout(previous);
+/* 누른 자리 바로 위에 잠깐 띄운다. 화면 위쪽 안내줄에만 적으면
+   목록을 내려 보는 중에는 보이지 않아 복사됐는지 알 수 없다. */
+function showToast(chip, copied) {
+  if (!toastEl) {
+    toastEl = document.createElement("div");
+    toastEl.className = "copy-toast";
+    toastEl.setAttribute("role", "status");
+    toastEl.setAttribute("aria-live", "polite");
+    document.body.appendChild(toastEl);
   }
 
-  button.textContent = copied ? "복사됨" : "실패";
-  button.classList.toggle("is-success", copied);
-  button.classList.toggle("is-error", !copied);
+  toastEl.textContent = copied ? "복사됨" : "복사 실패";
+  toastEl.classList.toggle("is-error", !copied);
 
-  /* 제목 자체가 「」로 시작하는 책이 있어 바깥에 따옴표를 덧대지 않는다. */
-  feedback.textContent = copied
-    ? `복사했어요 — ${title} · 판매글에 붙여넣으세요.`
-    : "복사하지 못했어요. 제목을 직접 선택해 복사해 주세요.";
-  feedback.classList.toggle("error", !copied);
+  /* 먼저 보이게 해야 크기를 잴 수 있다. */
+  toastEl.classList.add("is-on");
 
-  resetTimers.set(
-    button,
-    setTimeout(() => {
-      button.textContent = "복사";
-      button.classList.remove("is-success", "is-error");
-      resetTimers.delete(button);
-    }, 1600)
-  );
+  const box = chip.getBoundingClientRect();
+  const size = toastEl.getBoundingClientRect();
+  const gap = 8;
+  let left = box.left + box.width / 2 - size.width / 2;
+  left = Math.max(gap, Math.min(left, window.innerWidth - size.width - gap));
+  let top = box.top - size.height - gap;
+  if (top < gap) {
+    top = box.bottom + gap; /* 화면 맨 위 항목이면 아래쪽에 띄운다 */
+  }
+  toastEl.style.left = `${Math.round(left)}px`;
+  toastEl.style.top = `${Math.round(top)}px`;
+
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastEl.classList.remove("is-on");
+  }, TOAST_MS);
 }
 
-/* 글자 자체를 누른 경우. 버튼 글자가 곧 내용이므로 텍스트를 바꾸지 않고
-   짧게 강조만 하고, 안내는 상단 안내줄에 남긴다. */
-function showChipResult(chip, copied) {
-  const previous = resetTimers.get(chip);
-  if (previous) {
-    clearTimeout(previous);
-  }
-
-  chip.classList.toggle("is-success", copied);
-  chip.classList.toggle("is-error", !copied);
-
-  feedback.textContent = copied
-    ? `복사했어요 — ${chip.dataset.copy}`
-    : "복사하지 못했어요. 글자를 직접 선택해 복사해 주세요.";
-  feedback.classList.toggle("error", !copied);
-
-  resetTimers.set(
-    chip,
-    setTimeout(() => {
-      chip.classList.remove("is-success", "is-error");
-      resetTimers.delete(chip);
-    }, 1200)
-  );
+function flashChip(chip, copied) {
+  chip.classList.remove("is-success", "is-error");
+  /* 연속으로 같은 글자를 눌러도 다시 깜빡이도록 재적용을 강제한다. */
+  void chip.offsetWidth;
+  chip.classList.add(copied ? "is-success" : "is-error");
+  setTimeout(() => chip.classList.remove("is-success", "is-error"), TOAST_MS);
 }
 
 document.addEventListener("click", async (event) => {
   const chip = event.target.closest(".copy-text");
-  if (chip && chip.dataset.copy) {
-    showChipResult(chip, await copyText(chip.dataset.copy));
+  if (!chip || !chip.dataset.copy) {
     return;
   }
 
-  const button = event.target.closest(".copy-button");
-  if (!button || button.disabled) {
-    return;
-  }
-
-  const title = button.dataset.copy;
-  if (!title) {
-    return;
-  }
-
-  showResult(button, title, await copyText(title));
+  const copied = await copyText(chip.dataset.copy);
+  flashChip(chip, copied);
+  showToast(chip, copied);
 });
