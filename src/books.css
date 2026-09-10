@@ -229,6 +229,31 @@
   outline-offset: 2px;
 }
 
+/* 일본 서점 어디에도 표지 이미지가 없는 책. 빈 칸으로 두면 빠뜨린 것처럼 보이므로
+   표지 자리에 같은 크기로 이유와 할 일을 적는다. 누르는 것이 아니므로 브랜드색을 쓰지 않는다. */
+.cover-missing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 152px;
+  min-height: 200px;
+  margin: 0;
+  padding: 12px 10px;
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  background: var(--surface-muted);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.cover-missing b {
+  color: var(--text);
+  font-size: 14px;
+}
+
 /* ---------- 사용법 안내 ---------- */
 .howto {
   margin: 0 22px 4px;
@@ -574,7 +599,8 @@
   /* 좁은 화면에서는 표지를 카드 오른쪽 위에 띄운다. */
   .col-cover img,
   .cover-save,
-  .cover-flag {
+  .cover-flag,
+  .cover-missing {
     width: 148px;
   }
 
