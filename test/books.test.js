@@ -177,3 +177,35 @@ test("복사할 값이 없는 글자는 무시한다", async () => {
   assert.equal(env.sandbox.__copied, null);
   assert.equal(env.body.children.length, 0);
 });
+
+test("날짜별 권수가 실제 책 수와 같다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  const blocks = html.split('<section id="date-').slice(1);
+  assert.ok(blocks.length > 0, "날짜 묶음이 있어야 한다");
+  let total = 0;
+  for (const block of blocks) {
+    const id = block.slice(0, block.indexOf('"'));
+    const rows = (block.match(/<td class="col-no"/g) || []).length;
+    assert.equal(Number(block.match(/class="date-count">(\d+)권/)[1]), rows, `${id} 머리글 권수`);
+    const link = html.match(new RegExp(`href="#date-${id}">[^<]*<small>(\\d+)권</small>`));
+    assert.ok(link, `${id} 바로 가기가 있어야 한다`);
+    assert.equal(Number(link[1]), rows, `${id} 바로 가기 권수`);
+    total += rows;
+  }
+  assert.equal(Number(html.match(/모두 (\d+)권/)[1]), total, "맨 아래 전체 권수");
+});
+
+test("날짜는 최근 것이 위에 있다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  const dates = [...html.matchAll(/class="date-name" datetime="([\d-]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(dates, [...dates].sort().reverse());
+});
+
+test("페이지 안 바로 가기는 모두 갈 곳이 있다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  const targets = [...html.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]);
+  assert.ok(targets.length > 0);
+  for (const target of targets) {
+    assert.ok(html.includes(`id="${target}"`), `${target} 대상이 없다`);
+  }
+});

@@ -31,6 +31,126 @@
   outline-offset: 2px;
 }
 
+/* ---------- 추가한 날짜 ---------- */
+/* 이전에 등록한 책과 새로 등록할 책이 섞이지 않도록 추가한 날짜로 나눈다.
+   목록이 길어 내려가면 위쪽 안내가 보이지 않으므로 날짜 머리글을 화면 위에 붙여 둔다. */
+.date-nav {
+  padding: 14px 22px 4px;
+}
+
+.date-nav-label {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.date-nav-label b {
+  color: var(--text);
+}
+
+.date-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.date-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid var(--brand);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--brand-strong);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.date-link:hover {
+  background: var(--brand-tint);
+}
+
+.date-link:focus-visible,
+.date-top:focus-visible,
+.date-note a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.date-link small {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.date-block {
+  margin-top: 22px;
+}
+
+.date-title {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0;
+  padding: 10px 22px;
+  border-top: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  background: var(--brand-tint);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.date-count {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* 맨 위 날짜에만 붙는다. 새 날짜를 위에 더하면 저절로 옮겨 간다. */
+.date-nav + .date-block .date-count::after {
+  content: "가장 최근";
+  margin-left: 10px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #12874e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.date-top {
+  margin-left: auto;
+  color: var(--brand-strong);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.date-note {
+  margin: 12px 22px 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.date-note a {
+  color: var(--brand-strong);
+  font-weight: 600;
+}
+
+/* 머리글이 화면 위에 붙어 있어 그만큼 띄워야 바로 가기로 온 책이 가려지지 않는다. */
+.book-table tr[id] {
+  scroll-margin-top: 64px;
+}
+
 /* ---------- 서가 묶음 ---------- */
 .booklist {
   padding: 8px 22px 4px;
@@ -408,7 +528,8 @@
   line-height: 1.5;
 }
 
-.badge-have {
+.badge-have,
+.badge-update {
   background: #d8f0e2;
   color: #135f37;
 }
@@ -430,7 +551,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .badge-have {
+  .badge-have,
+  .badge-update {
     background: #17402c;
     color: #93dcb4;
   }
@@ -555,6 +677,19 @@
 @media (max-width: 640px) {
   .booklist {
     padding: 8px 14px 4px;
+  }
+
+  .date-nav {
+    padding: 12px 14px 4px;
+  }
+
+  .date-title {
+    padding: 8px 14px;
+    font-size: 18px;
+  }
+
+  .date-note {
+    margin: 12px 14px 0;
   }
 
   .book-table thead {
