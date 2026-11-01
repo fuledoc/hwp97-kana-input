@@ -178,34 +178,26 @@ test("복사할 값이 없는 글자는 무시한다", async () => {
   assert.equal(env.body.children.length, 0);
 });
 
-test("날짜별 권수가 실제 책 수와 같다", () => {
+test("묶음별 권수와 전체 권수가 실제 책 수와 같다", () => {
   const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
-  const blocks = html.split('<section id="date-').slice(1);
-  assert.ok(blocks.length > 0, "날짜 묶음이 있어야 한다");
+  const groups = html.split('<section class="booklist"').slice(1);
+  assert.ok(groups.length > 0, "묶음이 있어야 한다");
   let total = 0;
-  for (const block of blocks) {
-    const id = block.slice(0, block.indexOf('"'));
-    const rows = (block.match(/<td class="col-no"/g) || []).length;
-    assert.equal(Number(block.match(/class="date-count">(\d+)권/)[1]), rows, `${id} 머리글 권수`);
-    const link = html.match(new RegExp(`href="#date-${id}">[^<]*<small>(\\d+)권</small>`));
-    assert.ok(link, `${id} 바로 가기가 있어야 한다`);
-    assert.equal(Number(link[1]), rows, `${id} 바로 가기 권수`);
+  for (const group of groups) {
+    const title = group.match(/class="group-title">([^<]*)</)[1].trim();
+    const rows = (group.match(/<td class="col-no"/g) || []).length;
+    assert.equal(Number(group.match(/class="group-count">(\d+)권/)[1]), rows, `${title} 권수`);
     total += rows;
   }
   assert.equal(Number(html.match(/모두 (\d+)권/)[1]), total, "맨 아래 전체 권수");
 });
 
-test("날짜는 최근 것이 위에 있다", () => {
+test("같은 책을 두 번 넣지 않는다(원래 있던 두 권 제외)", () => {
   const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
-  const dates = [...html.matchAll(/class="date-name" datetime="([\d-]+)"/g)].map((m) => m[1]);
-  assert.deepEqual(dates, [...dates].sort().reverse());
-});
-
-test("페이지 안 바로 가기는 모두 갈 곳이 있다", () => {
-  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
-  const targets = [...html.matchAll(/href="#([^"]+)"/g)].map((m) => m[1]);
-  assert.ok(targets.length > 0);
-  for (const target of targets) {
-    assert.ok(html.includes(`id="${target}"`), `${target} 대상이 없다`);
-  }
+  const isbns = [...html.matchAll(/field-isbn" data-copy="(\d+)"/g)].map((m) => m[1]);
+  const seen = new Map();
+  for (const isbn of isbns) seen.set(isbn, (seen.get(isbn) || 0) + 1);
+  const twice = [...seen].filter(([, n]) => n > 1).map(([isbn]) => isbn).sort();
+  /* 古代史 不都合な真実, 「歴史認識」とは何か는 실물이 두 권씩 있어 목록에도 두 번 있다. */
+  assert.deepEqual(twice, ["9784121023322", "9784408337647"]);
 });
