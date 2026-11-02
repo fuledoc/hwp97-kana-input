@@ -394,7 +394,8 @@
 /* 표지 저장 바로 밑에 두면 저장하려다 잘못 누르기 쉬워 책 정보 맨 아래에 둔다.
    이번 방문에 누른 책(.is-here)은 그 자리에 흐리게 남긴다. 바로 접으면 아래 행이
    올라와 다음에 누를 자리가 바뀐다. 숨김은 클래스로 한다. 좁은 화면의 행은
-   display:block이라 hidden 속성이 듣지 않는다. */
+   display:block이라 hidden 속성이 듣지 않는다. 완료한 책은 원래 자리로 다시
+   꺼내지 않고 「등록 완료한 책 보기」 목록(.done-panel)에만 모은다. */
 .done-bar {
   display: flex;
   flex-wrap: wrap;
@@ -404,10 +405,13 @@
 }
 
 /* 경고는 목록을 내려 보는 중에도 보여야 한다. 위쪽 안내줄만으로는 보이지 않는다.
-   화면을 적게 차지하도록 권수와 보기 버튼은 함께 붙이지 않는다. */
+   화면을 적게 차지하도록 권수와 보기 버튼은 함께 붙이지 않는다. 「등록 완료한 책 보기」
+   목록을 보는 동안에는 경고의 원래 자리가 화면 아래에 있으므로 아래에 붙는다(bottom).
+   목록 위로 옮기면 경고가 뜨고 질 때마다 열린 목록이 밀린다. */
 .done-alert {
   position: sticky;
   top: 0;
+  bottom: 0;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -430,7 +434,8 @@
 
 .done-toggle,
 .done-retry,
-.done-button {
+.done-button,
+.done-item-button {
   min-height: 44px;
   padding: 0 14px;
   border: 2px solid var(--brand);
@@ -444,18 +449,21 @@
 
 .done-toggle:hover,
 .done-retry:hover,
-.done-button:hover {
+.done-button:hover,
+.done-item-button:hover {
   background: var(--brand-tint);
 }
 
 .done-toggle:focus-visible,
 .done-retry:focus-visible,
-.done-button:focus-visible {
+.done-button:focus-visible,
+.done-item-button:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
-.done-button[disabled] {
+.done-button[disabled],
+.done-item-button[disabled] {
   border-color: var(--border);
   color: var(--text-muted);
   cursor: wait;
@@ -499,9 +507,85 @@
   line-height: 1.5;
 }
 
-body:not(.show-done) .book-table tr.is-done:not(.is-here),
+.book-table tr.is-done:not(.is-here),
 .booklist.all-done {
   display: none;
+}
+
+.done-panel {
+  flex-basis: 100%;
+  margin: 2px 0 6px;
+  padding: 2px 16px 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.done-panel[hidden] {
+  display: none;
+}
+
+.done-panel-note {
+  margin: 10px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.done-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 열려 있는 동안 항목의 높이가 바뀌면 아래 책들이 밀린다. 상태 문구는 한 줄로
+   자르고 버튼 폭은 고정해, 「되돌리기」와 「다시 빼기」가 바뀌어도 그대로 둔다. */
+.done-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+
+.done-item-title {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* 시각과 실패 안내는 같은 한 줄 자리를 번갈아 쓴다. 안내가 들어갔다 빠져도 높이가 그대로다 */
+.done-item-when,
+.done-item .done-message {
+  grid-column: 1;
+  grid-row: 2;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.done-item-when {
+  color: var(--text-muted);
+}
+
+.done-item.has-message .done-item-when {
+  display: none;
+}
+
+.done-item-button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 8.5em;
+  padding: 0 8px;
+}
+
+.done-item.is-back .done-item-title {
+  color: var(--text-muted);
 }
 
 .book-table tr.is-done .col-cover,
@@ -688,6 +772,21 @@ body:not(.show-done) .book-table tr.is-done:not(.is-here),
 
   .done-bar {
     padding: 12px 14px 2px;
+  }
+
+  /* 권수 문구가 한 자리 늘거나 줄 때 「닫기」 버튼이 옆과 아래를 오가면 열린 목록이 밀린다 */
+  .done-summary {
+    flex-basis: 100%;
+  }
+
+  /* 320px에서도 「12월 31일 오후 12:59」와 「코드가 맞지 않습니다」가 잘리지 않게.
+     버튼은 가장 긴 「기록하는 중…」이 들어가는 폭이다 */
+  .done-panel {
+    padding: 2px 12px 4px;
+  }
+
+  .done-item-button {
+    width: 7em;
   }
 
   .done-alert {

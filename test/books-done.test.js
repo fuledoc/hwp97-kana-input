@@ -38,6 +38,14 @@ class Node {
   set className(value) {
     this.cls = new Set(value.split(" ").filter(Boolean));
   }
+  /* 실제 DOM처럼 자식의 글자까지 합쳐 읽고, 쓰면 자식을 지운다 */
+  get textContent() {
+    return this.text + this.children.map((child) => child.textContent).join("");
+  }
+  set textContent(value) {
+    this.text = String(value);
+    this.children = [];
+  }
   setAttribute(name, value) {
     this.attrs[name] = value;
   }
@@ -55,6 +63,10 @@ class Node {
   remove() {
     const list = this.parent.children;
     list.splice(list.indexOf(this), 1);
+  }
+  replaceChildren(...nodes) {
+    this.children = [];
+    this.append(...nodes);
   }
   addEventListener(type, fn) {
     (this.listeners[type] ||= []).push(fn);
@@ -85,6 +97,10 @@ function makeRow(id) {
   row.dataset.bookId = id;
   const info = new Node("td");
   info.className = "col-info";
+  const title = new Node("button");
+  title.className = "field-value copy-text field-title";
+  title.dataset.copy = `제목-${id.replace(/^(97[89]\d{10})-\d$/, "$1")}`; /* 같은 책 둘째 권은 제목이 같다 */
+  info.append(title);
   row.append(info);
   return row;
 }
@@ -182,6 +198,14 @@ function setup({ respond, api = "https://api.test", groups = [["a1", "a2"], ["b1
     warning: () => page.querySelector(".done-warning"),
     retry: () => page.querySelector(".done-retry"),
     toggle: () => page.querySelector(".done-toggle"),
+    panel: () => page.querySelector(".done-panel"),
+    items: () => page.querySelectorAll(".done-item"),
+    item: (title) => page.querySelectorAll(".done-item").find((li) => li.children[0].textContent === title),
+    itemButton: (title) =>
+      page
+        .querySelectorAll(".done-item")
+        .find((li) => li.children[0].textContent === title)
+        .querySelector(".done-item-button"),
     settle: () => new Promise((resolve) => setImmediate(resolve)),
     alert: () => page.querySelector(".done-alert"),
     tick: () => timers.splice(0).forEach((timer) => timer.fn()),
@@ -255,20 +279,292 @@ test("목록에 없는 책 기록은 세지 않는다", async () => {
   assert.equal(env.toggle().hidden, true);
 });
 
-test("한 묶음이 다 끝나면 묶음이 사라지고, 보기를 켜면 돌아온다", async () => {
+test("한 묶음이 다 끝나면 묶음이 사라지고, 보기를 켜도 원래 자리로 꺼내지 않는다", async () => {
   const env = setup({ respond: withDone({ b1: 1 }) });
   await env.settle();
   assert.ok(env.sections[1].cls.has("all-done"));
   await env.toggle().click();
-  assert.ok(env.page.cls.has("show-done"));
-  assert.ok(!env.sections[1].cls.has("all-done"));
-  assert.equal(env.toggle().textContent, "등록 완료한 책 숨기기");
+  assert.ok(env.sections[1].cls.has("all-done"), "찾으러 목록을 다 내려가지 않게 위에 모은다");
+  assert.ok(env.row("b1").cls.has("is-done"));
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), ["제목-b1"]);
+});
+
+test("보기를 누르면 완료한 책이 최근에 누른 것부터 위에 모인다", async () => {
+  const env = setup({
+    groups: [["a1", "a2", "a3"], ["b1"]],
+    respond: withDone({ a1: Date.UTC(2026, 9, 30, 1), a3: Date.UTC(2026, 10, 2, 1), b1: Date.UTC(2026, 9, 31, 1) }),
+  });
+  await env.settle();
+  assert.equal(env.panel().hidden, true);
+  assert.equal(env.toggle().attrs["aria-expanded"], "false");
+  await env.toggle().click();
+  assert.equal(env.panel().hidden, false);
+  assert.equal(env.toggle().textContent, "등록 완료한 책 닫기");
+  assert.equal(env.toggle().attrs["aria-expanded"], "true");
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), ["제목-a3", "제목-b1", "제목-a1"]);
+  assert.ok(env.item("제목-a3").children[1].textContent.includes("11월 2일"));
+  assert.equal(env.itemButton("제목-a3").textContent, "되돌리기");
+
+  await env.toggle().click();
+  assert.equal(env.panel().hidden, true);
+  assert.equal(env.items().length, 0);
+  assert.equal(env.toggle().textContent, "등록 완료한 책 보기");
+});
+
+test("오늘 누른 책은 「오늘」과 시각으로 보인다", async () => {
+  const env = setup({ respond: withDone({ a1: Date.now() }) });
+  await env.settle();
+  await env.toggle().click();
+  assert.match(env.item("제목-a1").children[1].textContent, /^오늘 /);
+});
+
+test("같은 책 둘째 권은 목록에서 구분된다", async () => {
+  const env = setup({
+    groups: [["9784408337647", "9784408337647-2"]],
+    respond: withDone({ "9784408337647": 2, "9784408337647-2": 1 }),
+  });
+  await env.settle();
+  await env.toggle().click();
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), [
+    "제목-9784408337647",
+    "제목-9784408337647 (같은 책 2번째)",
+  ]);
+});
+
+test("ISBN 없는 책 번호는 둘째 권으로 읽지 않는다", async () => {
+  const env = setup({ groups: [["noisbn-7617-05", "noisbn-7616-2"]], respond: withDone({ "noisbn-7617-05": 2, "noisbn-7616-2": 1 }) });
+  await env.settle();
+  await env.toggle().click();
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), ["제목-noisbn-7617-05", "제목-noisbn-7616-2"]);
+});
+
+test("목록에서 되돌리면 그 자리에 남고 책은 목록으로 돌아온다", async () => {
+  const env = setup({
+    groups: [["a1", "a2"], ["b1"]],
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) =>
+      options.method === "GET"
+        ? { status: 200, body: { done: { a1: 2, b1: 1 } } }
+        : { status: 200, body: { id: url.split("/").pop(), doneAt: 9 } },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  assert.deepEqual(writesOf(env), ["DELETE"]);
+  assert.ok(env.requests.at(-1).url.endsWith("/done/a1"));
+  assert.equal(env.row("a1").cls.has("is-done"), false, "책 목록에 다시 나온다");
+  assert.equal(env.items().length, 2, "항목이 빠지면 밑의 「되돌리기」가 밀려 올라와 다른 책을 되돌린다");
+  assert.ok(env.item("제목-a1").cls.has("is-back"));
+  assert.equal(env.item("제목-a1").children[1].textContent, "목록으로 돌려놓음");
+  assert.equal(env.itemButton("제목-a1").textContent, "다시 빼기");
+  assert.equal(env.summary(), "남은 책 2권 · 등록 완료 1권");
+
+  assert.equal(env.itemButton("제목-a1").disabled, true, "바뀐 목록 버튼도 눌리지 않는 모습으로 보인다");
+  await env.itemButton("제목-a1").click();
+  assert.deepEqual(writesOf(env), ["DELETE"], "더블클릭의 둘째 클릭이 다시 빼지 않는다");
+  assert.equal(env.button("a1").disabled, true, "행 버튼도 함께 쉰다");
+
+  env.tick();
+  assert.equal(env.itemButton("제목-a1").disabled, false);
+  await env.itemButton("제목-a1").click();
+  assert.deepEqual(writesOf(env), ["DELETE", "PUT"], "잘못 되돌린 책은 그 자리에서 다시 뺀다");
+  assert.ok(env.row("a1").cls.has("is-done"));
+  assert.equal(env.itemButton("제목-a1").textContent, "되돌리기");
+});
+
+test("기록 중에는 행 버튼과 목록 버튼이 함께 막힌다", async () => {
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done: { a1: 1 } } };
+      await gate;
+      return { status: 200, body: { id: "a1", doneAt: null } };
+    },
+  });
+  await env.settle();
+  await env.toggle().click();
+  const pressed = env.itemButton("제목-a1").click();
+  await env.settle();
+  assert.equal(env.itemButton("제목-a1").disabled, true);
+  assert.equal(env.itemButton("제목-a1").textContent, "기록하는 중…");
+  assert.equal(env.button("a1").disabled, true);
+  await env.button("a1").click();
+  await env.retry().click(); /* 기다리는 동안 온 조회도 그 항목을 건드리지 않는다 */
+  assert.equal(env.itemButton("제목-a1").textContent, "기록하는 중…");
+  release();
+  await pressed;
+  assert.deepEqual(writesOf(env), ["DELETE"]);
+});
+
+test("기록 중에 목록을 열어도 그 책 버튼은 막혀 있다", async () => {
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done: { a1: 1 } } };
+      await gate;
+      return { status: 200, body: { id: "a1", doneAt: null } };
+    },
+  });
+  await env.settle();
+  const pressed = env.button("a1").click();
+  await env.settle();
+  await env.toggle().click();
+  assert.equal(env.itemButton("제목-a1").disabled, true);
+  assert.equal(env.itemButton("제목-a1").textContent, "기록하는 중…");
+  release();
+  await pressed;
+  assert.equal(env.itemButton("제목-a1").textContent, "다시 빼기");
+});
+
+test("목록에서 되돌리기가 실패하면 목록 안에 알린다", async () => {
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done: { a1: 1 } } };
+      throw new Error("offline");
+    },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  const message = env.item("제목-a1").querySelector(".done-message").textContent;
+  assert.ok(message.includes("되돌리지 못했습니다"));
+  assert.equal(env.itemButton("제목-a1").textContent, "되돌리기");
+  assert.equal(env.itemButton("제목-a1").disabled, false, "실패 뒤에는 바로 다시 누를 수 있다");
+  assert.ok(env.row("a1").cls.has("is-done"));
+});
+
+test("목록 안내는 시각 자리에 짧게 쓰고, 긴 안내는 행에 둔다", async () => {
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done: { a1: 1 } } };
+      throw new Error("offline");
+    },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  const item = env.item("제목-a1");
+  assert.equal(item.querySelector(".done-message").textContent, "되돌리지 못했습니다", "길면 항목 높이가 바뀐다");
+  assert.ok(item.cls.has("has-message"), "시각 대신 안내를 보인다");
+  assert.ok(env.message("a1").includes("인터넷을 확인하고 다시 눌러 주세요"));
+});
+
+test("목록에서 되돌리기 응답을 잃고 서버에 반영됐으면 목록 안내도 지운다", async () => {
+  let done = { a1: 7 };
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done } };
+      done = {};
+      throw new Error("reply lost");
+    },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  const item = () => env.item("제목-a1");
+  assert.ok(item().querySelector(".done-message").textContent.includes("되돌리지 못했습니다"));
+  await env.retry().click();
+  assert.equal(env.itemButton("제목-a1").textContent, "다시 빼기");
+  assert.equal(item().querySelector(".done-message").textContent, "", "시키는 대로 다시 누르면 되돌린 책이 다시 빠진다");
+  assert.equal(item().cls.has("has-message"), false);
+});
+
+test("목록을 다시 열어도 실패 안내는 그 책 옆에 남는다", async () => {
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) => {
+      if (options.method === "GET") return { status: 200, body: { done: { a1: 7, a2: 3 } } };
+      throw new Error("offline");
+    },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  await env.toggle().click();
+  await env.toggle().click();
+  assert.equal(env.item("제목-a1").querySelector(".done-message").textContent, "되돌리지 못했습니다");
+  assert.equal(env.item("제목-a2").querySelector(".done-message").textContent, "");
+});
+
+test("숫자가 아닌 코드 안내도 다른 컴퓨터가 그 책을 끝내면 지운다", async () => {
+  let done = {};
+  const env = setup({ prompt: "ㅁㄴㅇㄹ", respond: async () => ({ status: 200, body: { done } }) });
+  await env.settle();
+  await env.button("a1").click();
+  assert.ok(env.message("a1").includes("코드가 맞지 않습니다"));
+  done = { a1: 9 }; /* 다른 컴퓨터에서 등록 완료 */
+  await env.retry().click();
+  assert.equal(env.message("a1"), "", "남아 있으면 목록에서 「다시 눌러 주세요」를 보고 되돌린다");
+  await env.toggle().click();
+  assert.equal(env.item("제목-a1").querySelector(".done-message").textContent, "");
+});
+
+test("목록이 열린 동안 같은 안내를 두 곳에서 읽지 않는다", async () => {
+  const env = setup({ respond: withDone({ a1: 1 }) });
+  await env.settle();
+  const rowMessage = env.row("a1").querySelector(".done-message");
+  await env.toggle().click();
+  assert.equal(rowMessage.attrs["aria-live"], "off");
+  assert.equal(env.item("제목-a1").querySelector(".done-message").attrs.role, "status");
+  await env.toggle().click();
+  assert.equal(rowMessage.attrs["aria-live"], "polite");
+});
+
+test("일본어 제목에만 일본어 표시를 붙인다", async () => {
+  const env = setup({ groups: [["9784408337647", "9784408337647-2"]], respond: withDone({ "9784408337647-2": 1 }) });
+  await env.settle();
+  await env.toggle().click();
+  const title = env.items()[0].children[0];
+  assert.equal(title.lang, undefined, "「같은 책 2번째」는 한국어로 읽어야 한다");
+  assert.equal(title.querySelector(".done-item-name").lang, "ja");
+  assert.equal(title.querySelector(".done-item-copy").textContent, " (같은 책 2번째)");
+});
+
+test("목록이 열려 있는 동안 조회가 와도 항목 수는 그대로다", async () => {
+  let done = { a1: 2, a2: 1 };
+  const env = setup({ respond: async () => ({ status: 200, body: { done } }) });
+  await env.settle();
+  await env.toggle().click();
+  done = { a1: 2, b1: 3 }; /* 다른 컴퓨터가 a2를 되돌리고 b1을 뺐다 */
+  await env.retry().click();
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), ["제목-a1", "제목-a2"]);
+  assert.equal(env.item("제목-a2").children[1].textContent, "목록으로 돌려놓음");
+  assert.equal(env.summary(), "남은 책 1권 · 등록 완료 2권");
+
+  await env.toggle().click();
+  await env.toggle().click();
+  assert.deepEqual(env.items().map((li) => li.children[0].textContent), ["제목-b1", "제목-a1"], "다시 열면 지금 상태로 만든다");
+});
+
+test("모두 되돌려도 열린 목록은 닫을 수 있다", async () => {
+  const env = setup({
+    storage: new Map([["books-done.code", "12345678"]]),
+    respond: async (url, options) =>
+      options.method === "GET"
+        ? { status: 200, body: { done: { a1: 1 } } }
+        : { status: 200, body: { id: "a1", doneAt: null } },
+  });
+  await env.settle();
+  await env.toggle().click();
+  await env.itemButton("제목-a1").click();
+  assert.equal(env.summary(), "남은 책 3권 · 등록 완료 0권");
+  assert.equal(env.toggle().hidden, false);
+  await env.toggle().click();
+  assert.equal(env.toggle().hidden, true);
+  assert.equal(env.panel().hidden, true);
 });
 
 test("모두 끝나면 그렇게 알려 준다", async () => {
   const env = setup({ groups: [["a1"]], respond: withDone({ a1: 1 }) });
   await env.settle();
-  assert.equal(env.summary(), "남은 책이 없습니다. 모두 등록을 마치셨습니다.");
+  assert.equal(env.summary(), "모두 등록을 마치셨습니다.");
 });
 
 test("기록을 못 불러오면 숨기지 않고 사실대로 알린다", async () => {
@@ -684,7 +980,7 @@ test("되돌리면 목록으로 돌아온다", async () => {
   });
   await env.settle();
   await env.toggle().click();
-  await env.button("a1").click();
+  await env.itemButton("제목-a1").click();
   assert.equal(env.requests.at(-1).method, "DELETE");
   assert.equal(env.row("a1").cls.has("is-done"), false);
   assert.equal(env.button("a1").textContent, "알라딘 등록 완료 · 목록에서 빼기");
