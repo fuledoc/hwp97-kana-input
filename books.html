@@ -6,12 +6,13 @@
     <title>책방</title>
     <meta name="description" content="중고 일본어 책 제목 목록과 한글 발음 일본어 입력기">
     <meta name="robots" content="noindex">
+    <meta name="done-api" content="https://books-api.fuledoc.com">
     <meta name="theme-color" content="#0f6676">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icon.svg">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="src/styles.css?v=12">
-    <link rel="stylesheet" href="src/books.css?v=12">
+    <link rel="stylesheet" href="src/styles.css?v=13">
+    <link rel="stylesheet" href="src/books.css?v=13">
   </head>
   <body>
     <main class="shell shell-wide">
@@ -20,7 +21,7 @@
           <span class="brand-mark">本</span>
           <div class="brand-text">
             <h1>책방</h1>
-            <p>제목 옆 「복사」를 눌러 판매글에 붙여넣으세요</p>
+            <p>글자를 누르면 복사됩니다. 판매글에 붙여넣으세요</p>
           </div>
         </div>
         <a class="backlink backlink-cta" href="index.html">한글 → 일본어 입력기 열기</a>
@@ -30,6 +31,7 @@
         <p><b>목록은 등록한 순서입니다.</b> 맨 위가 가장 최근에 등록한 책입니다.</p>
         <p>항목은 <b>알라딘 등록 화면의 순서·칸 이름</b> 그대로입니다. <b>글자를 누르면 그 항목만 복사</b>되고 「복사됨」이 잠깐 뜹니다. 위에서 아래로 하나씩 눌러 옮겨 담으세요.</p>
         <p>표지 위에 <b><span class="badge badge-have">알라딘 검색됨</span></b>이 붙은 책은 알라딘에 이미 있습니다. <b>ISBN</b>을 등록 화면 맨 위 「ISBN(바코드)」 칸에 붙여넣고 <b>검색하기</b>를 누르면 제목·저자·출판사·쪽수가 저절로 채워져서, 상태와 가격만 넣으면 됩니다. <b>「직접 등록」</b>인 책만 항목을 하나씩 옮겨 담으시면 됩니다.</p>
+        <p class="done-howto" hidden><b>알라딘 등록을 마친 책</b>은 책 정보 맨 아래의 「알라딘 등록 완료 · 목록에서 빼기」를 누르세요. 그 책은 바로 흐려지고, 다음에 열면 목록에서 빠집니다. 다른 컴퓨터에서도 함께 빠집니다. 잘못 눌렀으면 그 자리의 「되돌리기」를 누르세요. 뺀 책은 지워지지 않고 「등록 완료한 책 보기」에 남아 있습니다.</p>
         <p><b>표지 저장</b>을 누르면 사진이 컴퓨터에 저장됩니다. 알라딘의 「상품 이미지」에서 그 파일을 첨부하세요.</p>
         <p><b>분류</b>는 등록 화면의 「상품 카테고리 설정」 창에서 왼쪽 칸부터 차례로 누르는 이름입니다. 예를 들어 <b>사회과학 &gt; 사회학 &gt; 사회복지</b>는 대분류 「사회과학」, 중분류 「사회학」, 소분류 「사회복지」를 차례로 누른 뒤 「설정 완료」를 누르시면 됩니다. <span class="badge badge-guess">분류는 제안값</span>은 알라딘이 정해 둔 분류가 없어서 골라 둔 것이니, 더 맞는 분류가 있으면 바꾸셔도 됩니다.</p>
       </section>
@@ -50,7 +52,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784788600706">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784788600706.jpg" download="9784788600706.jpg"><img src="photos/covers/9784788600706.jpg" alt="JAF全日本ロードサービス地図 표지" width="500" height="707" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -72,7 +74,7 @@
                   <p class="check-note">표지에 적힌 특별부록(ミニガイド)이 책에 남아 있는지도 확인해 주세요.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784398600646">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784398600646.jpg" download="9784398600646.jpg"><img src="photos/covers/9784398600646.jpg" alt="でっか字東京23区便利情報地図 표지" width="353" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -93,7 +95,7 @@
                   <p class="check-note">출간일은 초판(2003년 4월)입니다. 국립국회도서관 소장본은 2004년 1월 3쇄이고 ISBN과 정가는 같습니다. 축척 1/10,000판이며, 「コンパクト」판이나 1:7,000판(街の達人7000)과는 다른 책입니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7617-04">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7617-04.jpg" download="noisbn-7617-04.jpg"><img src="photos/covers/noisbn-7617-04.jpg" alt="国語 五上 銀河 표지" width="500" height="707" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -114,7 +116,7 @@
                   <p class="check-note">판 확정 — 표지의 「38光村 国語541」이 국립국회도서관의 1988년(昭和63年) 改訂検定済 판 기록과 같고, 표지 그림도 光村図書 「教科書クロニクル」의 昭和64年度版(1989~1991년 사용)과 같습니다. 정가는 서지에 기록이 없습니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7617-05">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7617-05.jpg" download="noisbn-7617-05.jpg"><img src="photos/covers/noisbn-7617-05.jpg" alt="国語 六上 創造 표지" width="500" height="707" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -135,7 +137,7 @@
                   <p class="check-note">판 확정 — 표지의 「38光村 国語641」이 국립국회도서관의 1988년(昭和63年) 改訂検定済 판 기록과 같고, 표지 그림도 光村図書 「教科書クロニクル」의 昭和64年度版(1989~1991년 사용)과 같습니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7617-03">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7617-03.jpg" download="noisbn-7617-03.jpg"><img src="photos/covers/noisbn-7617-03.jpg" alt="名曲203選 표지" width="500" height="714" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -157,7 +159,7 @@
                   <p class="check-note">1977·1979·1980·1981년에 찍은 것이 있으나 모두 418쪽·2,500엔이라, 출간일은 초판(1977년 4월)으로 적었습니다. 도서명은 표지 표기대로 적었고, 서지에 따라 「名曲二〇三選」으로도 나옵니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7617-09">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7617-09.jpg" download="noisbn-7617-09.jpg"><img src="photos/covers/noisbn-7617-09.jpg" alt="日本成功の代償 표지" width="500" height="725" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -177,7 +179,7 @@
                   <p class="check-note">ISBN이 없어 알라딘 「ISBN(바코드)」 검색을 쓸 수 없습니다. 항목을 하나씩 옮겨 담아 주세요.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7618-13">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7618-13.jpg" download="noisbn-7618-13.jpg"><img src="photos/covers/noisbn-7618-13.jpg" alt="カントリーリスク 표지" width="500" height="725" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -218,7 +220,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784809410000">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784809410000.jpg" download="9784809410000.jpg"><img src="photos/covers/9784809410000.jpg" alt="サッカー「観戦力」が高まる 표지" width="300" height="441" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -258,7 +260,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784806107897">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784806107897.jpg" download="9784806107897.jpg"><img src="photos/covers/9784806107897.jpg" alt="人生を逆転する最強の法則 표지" width="336" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -278,7 +280,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784820708841">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784820708841.jpg" download="9784820708841.jpg"><img src="photos/covers/9784820708841.jpg" alt="三菱重工21世紀への挑戦 표지" width="351" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -298,7 +300,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784061542198">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784061542198.jpg" download="9784061542198.jpg"><img src="photos/covers/9784061542198.jpg" alt="マルチメディアで何が変わるか 표지" width="347" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -317,7 +319,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062077347">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062077347.jpg" download="9784062077347.jpg"><img src="photos/covers/9784062077347.jpg" alt="サラリーマン勝者の条件 표지" width="342" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -336,7 +338,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784821144051">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784821144051.jpg" download="9784821144051.jpg"><img src="photos/covers/9784821144051.jpg" alt="イエス!となりの席は外国人 표지" width="353" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -355,7 +357,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784408131900">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784408131900.jpg" download="9784408131900.jpg"><img src="photos/covers/9784408131900.jpg" alt="リストラで勝つ! 표지" width="300" height="435" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -375,7 +377,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784761253417">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784761253417.jpg" download="9784761253417.jpg"><img src="photos/covers/9784761253417.jpg" alt="技術者を活かすプレイング・マネジャーの条件 표지" width="300" height="447" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -395,7 +397,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7616-08">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7616-08.jpg" download="noisbn-7616-08.jpg"><img src="photos/covers/noisbn-7616-08.jpg" alt="積木くずし 표지" width="500" height="729" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -417,7 +419,7 @@
                   <p class="check-note">표지는 メルカリ에 올라온 桐原書店판(1983년 1월 80쇄, 235쪽·980엔) 판매 사진입니다. 1982년판과 판이 같아 표지도 같지만, 실물 표지와 다르면 쓰지 마세요.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532310868">
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532310868.jpg" download="9784532310868.jpg"><img src="photos/covers/9784532310868.jpg" alt="日本の優秀企業研究 표지" width="326" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -437,7 +439,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784761253745">
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784761253745.jpg" download="9784761253745.jpg"><img src="photos/covers/9784761253745.jpg" alt="10年後一流の会社 표지" width="357" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -457,7 +459,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062009478">
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062009478.jpg" download="9784062009478.jpg"><img src="photos/covers/9784062009478.jpg" alt="撃墜（上） 표지" width="346" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -477,7 +479,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784827601428">
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784827601428.jpg" download="9784827601428.jpg"><img src="photos/covers/9784827601428.jpg" alt="スペース産業に投資せよ 표지" width="300" height="436" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -497,7 +499,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062030250">
               <td class="col-no" data-label="번호">13</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062030250.jpg" download="9784062030250.jpg"><img src="photos/covers/9784062030250.jpg" alt="市場は世界にあり 표지" width="349" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -516,7 +518,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784569611556">
               <td class="col-no" data-label="번호">14</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784569611556.jpg" download="9784569611556.jpg"><img src="photos/covers/9784569611556.jpg" alt="ウェルチ勝者の哲学 표지" width="366" height="536" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -536,7 +538,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784001131031">
               <td class="col-no" data-label="번호">15</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784001131031.jpg" download="9784001131031.jpg"><img src="photos/covers/9784001131031.jpg" alt="三国志（下） 표지" width="330" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -557,7 +559,7 @@
                   <p class="check-note">등에 적힌 값(上570·中670·下620엔)은 뒤에 찍은 쇄의 값입니다. 정가는 국립국회도서관 기록의 1980년 초판 값입니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784001131024">
               <td class="col-no" data-label="번호">16</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784001131024.jpg" download="9784001131024.jpg"><img src="photos/covers/9784001131024.jpg" alt="三国志（中） 표지" width="331" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -578,7 +580,7 @@
                   <p class="check-note">등에 적힌 값(上570·中670·下620엔)은 뒤에 찍은 쇄의 값입니다. 정가는 국립국회도서관 기록의 1980년 초판 값입니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784001131017">
               <td class="col-no" data-label="번호">17</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784001131017.jpg" download="9784001131017.jpg"><img src="photos/covers/9784001131017.jpg" alt="三国志（上） 표지" width="360" height="375" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -599,7 +601,7 @@
                   <p class="check-note">등에 적힌 값(上570·中670·下620엔)은 뒤에 찍은 쇄의 값입니다. 정가는 국립국회도서관 기록의 1980년 초판 값입니다.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062062541">
               <td class="col-no" data-label="번호">18</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062062541.jpg" download="9784062062541.jpg"><img src="photos/covers/9784062062541.jpg" alt="ワイルド・スワン（下） 표지" width="339" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -618,7 +620,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532087494">
               <td class="col-no" data-label="번호">19</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532087494.jpg" download="9784532087494.jpg"><img src="photos/covers/9784532087494.jpg" alt="企業変革の技術マネジメント 표지" width="300" height="449" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -638,7 +640,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784534009050">
               <td class="col-no" data-label="번호">20</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784534009050.jpg" download="9784534009050.jpg"><img src="photos/covers/9784534009050.jpg" alt="ICとLSIのことがわかる本 표지" width="353" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -678,7 +680,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784817402943">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784817402943.jpg" download="9784817402943.jpg"><img src="photos/covers/9784817402943.jpg" alt="巨大企業トヨタの限界 표지" width="354" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -698,7 +700,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784167264024">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784167264024.jpg" download="9784167264024.jpg"><img src="photos/covers/9784167264024.jpg" alt="松下幸之助一事一言 표지" width="343" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -718,7 +720,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="noisbn-7617-06">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/noisbn-7617-06.jpg" download="noisbn-7617-06.jpg"><img src="photos/covers/noisbn-7617-06.jpg" alt="特別史蹟名古屋城 표지" width="382" height="494" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -741,7 +743,7 @@
                   <p class="check-note">판 확인 필요 — 1966년 초판, 1970년 재판(175쪽·320엔), 1976년 3판, 1985년 4판(226쪽), 1993년 5판이 있습니다. 판권장(奥付)의 판 표시를 보고 정해 주세요. 표지는 日本の古本屋에 올라온 1993년 5판 사진이라, 실물 표지와 다르면 쓰지 마세요.</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784889911923">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784889911923.jpg" download="9784889911923.jpg"><img src="photos/covers/9784889911923.jpg" alt="強い会社は勝つために何をしたか 표지" width="348" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -761,7 +763,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784924719491">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784924719491.jpg" download="9784924719491.jpg"><img src="photos/covers/9784924719491.jpg" alt="堤清二経営は永久革命だ 표지" width="375" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -781,7 +783,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784889900231">
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784889900231.jpg" download="9784889900231.jpg"><img src="photos/covers/9784889900231.jpg" alt="マネジメントルネサンス 표지" width="300" height="429" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -801,7 +803,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532143848">
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532143848.jpg" download="9784532143848.jpg"><img src="photos/covers/9784532143848.jpg" alt="続・強い会社 표지" width="343" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -821,7 +823,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784502216039">
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784502216039.jpg" download="9784502216039.jpg"><img src="photos/covers/9784502216039.jpg" alt="品質コストマネジメント 표지" width="336" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -841,7 +843,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532148799">
               <td class="col-no" data-label="번호">13</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532148799.jpg" download="9784532148799.jpg"><img src="photos/covers/9784532148799.jpg" alt="シックスシグマ・ウエイ 표지" width="378" height="544" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -861,7 +863,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784871903639">
               <td class="col-no" data-label="번호">14</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784871903639.jpg" download="9784871903639.jpg"><img src="photos/covers/9784871903639.jpg" alt="三菱重工ものづくり百年の大計 표지" width="349" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -881,7 +883,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784822241902">
               <td class="col-no" data-label="번호">15</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784822241902.jpg" download="9784822241902.jpg"><img src="photos/covers/9784822241902.jpg" alt="ウェルチの戦略ノート 표지" width="392" height="556" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -900,7 +902,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784484932026">
               <td class="col-no" data-label="번호">16</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784484932026.jpg" download="9784484932026.jpg"><img src="photos/covers/9784484932026.jpg" alt="サラリーマン13の大罪 표지" width="359" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -919,7 +921,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784889900521">
               <td class="col-no" data-label="번호">17</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784889900521.jpg" download="9784889900521.jpg"><img src="photos/covers/9784889900521.jpg" alt="未来萌芽 표지" width="300" height="460" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -939,7 +941,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062044769">
               <td class="col-no" data-label="번호">18</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062044769.jpg" download="9784062044769.jpg"><img src="photos/covers/9784062044769.jpg" alt="創造する組織の研究 표지" width="363" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -958,7 +960,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784163454603">
               <td class="col-no" data-label="번호">19</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784163454603.jpg" download="9784163454603.jpg"><img src="photos/covers/9784163454603.jpg" alt="新・危機管理のノウハウ 표지" width="357" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -978,7 +980,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062056533">
               <td class="col-no" data-label="번호">20</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062056533.jpg" download="9784062056533.jpg"><img src="photos/covers/9784062056533.jpg" alt="ワイルド・スワン（上） 표지" width="363" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1017,7 +1019,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784478331040">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784478331040.jpg" download="9784478331040.jpg"><img src="photos/covers/9784478331040.jpg" alt="変革の哲学 표지" width="330" height="507" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1038,7 +1040,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784534038302">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784534038302.jpg" download="9784534038302.jpg"><img src="photos/covers/9784534038302.jpg" alt="トヨタの「カイゼン伝道師」が現場を甦らせる! 표지" width="369" height="517" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1057,7 +1059,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784576850221">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784576850221.jpg" download="9784576850221.jpg"><img src="photos/covers/9784576850221.jpg" alt="企業指揮官のための戦争の原則 표지" width="300" height="437" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1076,7 +1078,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784594037659">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784594037659.jpg" download="9784594037659.jpg"><img src="photos/covers/9784594037659.jpg" alt="日本よ 표지" width="353" height="524" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1095,7 +1097,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532161484">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532161484.jpg" download="9784532161484.jpg"><img src="photos/covers/9784532161484.jpg" alt="堀田力の「おごるな上司!」 표지" width="324" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1115,7 +1117,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062100403">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784062100403.jpg" download="9784062100403.jpg"><img src="photos/covers/9784062100403.jpg" alt="ウェルチが日本を変える 표지" width="378" height="556" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1134,7 +1136,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784140087909">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784140087909.jpg" download="9784140087909.jpg"><img src="photos/covers/9784140087909.jpg" alt="超大国ニッポン 표지" width="353" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1154,7 +1156,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784478340196">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784478340196.jpg" download="9784478340196.jpg"><img src="photos/covers/9784478340196.jpg" alt="グローバル企業の盛衰 표지" width="352" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1174,7 +1176,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784195152935">
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784195152935.jpg" download="9784195152935.jpg"><img src="photos/covers/9784195152935.jpg" alt="大不況サバイバル読本 표지" width="348" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1194,7 +1196,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532143015">
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532143015.jpg" download="9784532143015.jpg"><img src="photos/covers/9784532143015.jpg" alt="強い会社 표지" width="342" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1214,7 +1216,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784532088767">
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784532088767.jpg" download="9784532088767.jpg"><img src="photos/covers/9784532088767.jpg" alt="テラスで読む世界経済読本 표지" width="343" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1233,7 +1235,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784569539416">
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784569539416.jpg" download="9784569539416.jpg"><img src="photos/covers/9784569539416.jpg" alt="組織の盛衰 표지" width="170" height="245" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1273,7 +1275,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784152034472">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784152034472.jpg" download="9784152034472.jpg"><img src="photos/covers/9784152034472.jpg" alt="日本/権力構造の謎（上） 표지" width="342" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1292,7 +1294,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784152034489">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784152034489.jpg" download="9784152034489.jpg"><img src="photos/covers/9784152034489.jpg" alt="日本/権力構造の謎（下） 표지" width="348" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1311,7 +1313,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784870304758">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784870304758.jpg" download="9784870304758.jpg"><img src="photos/covers/9784870304758.jpg" alt="社長になる人が知っておくべき実務と経営知識 표지" width="357" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1330,7 +1332,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784820116417">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784820116417.jpg" download="9784820116417.jpg"><img src="photos/covers/9784820116417.jpg" alt="経営品質の真実 표지" width="375" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1350,7 +1352,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784806117605">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784806117605.jpg" download="9784806117605.jpg"><img src="photos/covers/9784806117605.jpg" alt="俺が、つくる! 표지" width="368" height="541" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1370,7 +1372,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784820115625">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784820115625.jpg" download="9784820115625.jpg"><img src="photos/covers/9784820115625.jpg" alt="逆転の競争戦略 표지" width="338" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1390,7 +1392,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784763191236">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784763191236.jpg" download="9784763191236.jpg"><img src="photos/covers/9784763191236.jpg" alt="脳内革命 표지" width="348" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1410,7 +1412,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784820708179">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784820708179.jpg" download="9784820708179.jpg"><img src="photos/covers/9784820708179.jpg" alt="一流の条件［完結編］ 표지" width="356" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1430,7 +1432,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784492554951">
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784492554951.jpg" download="9784492554951.jpg"><img src="photos/covers/9784492554951.jpg" alt="戦略「脳」を鍛える 표지" width="327" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1470,7 +1472,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784623038862">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784623038862.jpg" download="9784623038862.jpg"><img src="photos/covers/9784623038862.jpg" alt="三鷹市の子ども家庭支援ネットワーク 표지" width="336" height="498" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1491,7 +1493,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784886026026">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784886026026.jpg" download="9784886026026.jpg"><img src="photos/covers/9784886026026.jpg" alt="養護施設と子どもたち 표지" width="356" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1510,7 +1512,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784641055322">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784641055322.jpg" download="9784641055322.jpg"><img src="photos/covers/9784641055322.jpg" alt="高齢者福祉とソーシャルワーク 표지" width="358" height="535" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1551,7 +1553,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784535560239">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784535560239.jpg" download="9784535560239.jpg"><img src="photos/covers/9784535560239.jpg" alt="福祉は投資である 표지" width="414" height="600" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1590,7 +1592,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784641161320">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784641161320.jpg" download="9784641161320.jpg"><img src="photos/covers/9784641161320.jpg" alt="コンビニエンス・ストア業態の革新 표지" width="327" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1609,7 +1611,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784792603014">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784792603014.jpg" download="9784792603014.jpg"><img src="photos/covers/9784792603014.jpg" alt="げだつマン 표지" width="425" height="600" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1628,7 +1630,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784915333194">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784915333194.jpg" download="9784915333194.jpg"><img src="photos/covers/9784915333194.jpg" alt="アップルシード 1 표지" width="500" height="700" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1648,7 +1650,7 @@
                   <p class="check-note">⚠ 1985년 초판과 같은 표지 · 판권장 확인</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784878920073">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784878920073.jpg" download="9784878920073.jpg"><img src="photos/covers/9784878920073.jpg" alt="仙術超攻殻ORION 표지" width="334" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1668,7 +1670,7 @@
                   <p class="check-note">⚠ 2010년 재간본은 275쪽 · 판권장 확인</p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784884000998">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784884000998.jpg" download="9784884000998.jpg"><img src="photos/covers/9784884000998.jpg" alt="東アジアの新時代に向けて 표지" width="433" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1687,7 +1689,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784837920175">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784837920175.jpg" download="9784837920175.jpg"><img src="photos/covers/9784837920175.jpg" alt="「体を温める」と病気は必ず治る 표지" width="323" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1707,7 +1709,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784531063857">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784531063857.jpg" download="9784531063857.jpg"><img src="photos/covers/9784531063857.jpg" alt="魂の記憶 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1727,7 +1729,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784492222058">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784492222058.jpg" download="9784492222058.jpg"><img src="photos/covers/9784492222058.jpg" alt="数学嫌いな人のための数学 표지" width="328" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1747,7 +1749,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784898310854">
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784898310854.jpg" download="9784898310854.jpg"><img src="photos/covers/9784898310854.jpg" alt="日本国民に告ぐ 표지" width="335" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1767,7 +1769,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784152091642">
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784152091642.jpg" download="9784152091642.jpg"><img src="photos/covers/9784152091642.jpg" alt="繁栄（上） 표지" width="500" height="724" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1787,7 +1789,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span><span class="badge badge-price">알라딘 정가 21,700원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784072460504">
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784072460504.jpg" download="9784072460504.jpg"><img src="photos/covers/9784072460504.jpg" alt="要約力 표지" width="387" height="555" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1807,7 +1809,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784270000977">
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784270000977.jpg" download="9784270000977.jpg"><img src="photos/covers/9784270000977.jpg" alt="ホーキング、宇宙のすべてを語る 표지" width="337" height="500" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1846,7 +1848,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-book-id="9784062579377">
               <td class="col-no" data-label="번호">1</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784062579377.jpg" download="9784062579377.jpg"><img src="photos/covers/9784062579377.jpg" alt="輪廻する宇宙 표지" width="500" height="774" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1867,7 +1869,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 10,370원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784569698250">
               <td class="col-no" data-label="번호">2</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784569698250.jpg" download="9784569698250.jpg"><img src="photos/covers/9784569698250.jpg" alt="［新訳］ローマ帝国衰亡史（下） 표지" width="396" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1886,7 +1888,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 11,450원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784087205091">
               <td class="col-no" data-label="번호">3</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784087205091.jpg" download="9784087205091.jpg"><img src="photos/covers/9784087205091.jpg" alt="リーダーは半歩前を歩け 표지" width="500" height="803" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1907,7 +1909,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 8,440원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784344984820">
               <td class="col-no" data-label="번호">4</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784344984820.jpg" download="9784344984820.jpg"><img src="photos/covers/9784344984820.jpg" alt="寿命の9割は腸で決まる 표지" width="500" height="793" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1927,7 +1929,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784408337647">
               <td class="col-no" data-label="번호">5</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1948,7 +1950,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784121018625">
               <td class="col-no" data-label="번호">6</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784121018625.jpg" download="9784121018625.jpg"><img src="photos/covers/9784121018625.jpg" alt="入門！論理学 표지" width="436" height="682" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1968,7 +1970,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 8,920원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784408337647-2">
               <td class="col-no" data-label="번호">7</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784408337647.jpg" download="9784408337647.jpg"><img src="photos/covers/9784408337647.jpg" alt="古代史 不都合な真実 표지" width="500" height="763" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -1988,7 +1990,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784569704135">
               <td class="col-no" data-label="번호">8</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784569704135.jpg" download="9784569704135.jpg"><img src="photos/covers/9784569704135.jpg" alt="［新訳］十八史略 표지" width="392" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2008,7 +2010,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784106107474">
               <td class="col-no" data-label="번호">9</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784106107474.jpg" download="9784106107474.jpg"><img src="photos/covers/9784106107474.jpg" alt="血圧と心臓が気になる人のための本 표지" width="500" height="680" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2028,7 +2030,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784166611508">
               <td class="col-no" data-label="번호">10</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784166611508.jpg" download="9784166611508.jpg"><img src="photos/covers/9784166611508.jpg" alt="大日本史 표지" width="500" height="797" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2048,7 +2050,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784140884188">
               <td class="col-no" data-label="번호">11</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784140884188.jpg" download="9784140884188.jpg"><img src="photos/covers/9784140884188.jpg" alt="保守とは何だろうか 표지" width="416" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2068,7 +2070,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784334037444">
               <td class="col-no" data-label="번호">12</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784334037444.jpg" download="9784334037444.jpg"><img src="photos/covers/9784334037444.jpg" alt="アゴを引けば身体が変わる 표지" width="386" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2089,7 +2091,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784121023322">
               <td class="col-no" data-label="번호">13</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2110,7 +2112,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784584124703">
               <td class="col-no" data-label="번호">14</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784584124703.jpg" download="9784584124703.jpg"><img src="photos/covers/9784584124703.jpg" alt="余剰の時代 표지" width="500" height="730" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2130,7 +2132,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784121023322-2">
               <td class="col-no" data-label="번호">15</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784121023322.jpg" download="9784121023322.jpg"><img src="photos/covers/9784121023322.jpg" alt="「歴史認識」とは何か 표지" width="376" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2150,7 +2152,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784797346596">
               <td class="col-no" data-label="번호">16</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784797346596.jpg" download="9784797346596.jpg"><img src="photos/covers/9784797346596.jpg" alt="脳がどんどん若返る生活習慣 표지" width="500" height="808" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2170,7 +2172,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784140885178">
               <td class="col-no" data-label="번호">17</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784140885178.jpg" download="9784140885178.jpg"><img src="photos/covers/9784140885178.jpg" alt="「司馬遼太郎」で学ぶ日本史 표지" width="500" height="777" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2190,7 +2192,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 9,400원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784062728447">
               <td class="col-no" data-label="번호">18</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784062728447.jpg" download="9784062728447.jpg"><img src="photos/covers/9784062728447.jpg" alt="高血圧はほっとくのが一番 표지" width="500" height="760" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2211,7 +2213,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 10,130원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784087727838">
               <td class="col-no" data-label="번호">19</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784087727838.jpg" download="9784087727838.jpg"><img src="photos/covers/9784087727838.jpg" alt="もものかんづめ 표지" width="500" height="699" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2230,7 +2232,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 9,920원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784905706342">
               <td class="col-no" data-label="번호">20</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784905706342.jpg" download="9784905706342.jpg"><img src="photos/covers/9784905706342.jpg" alt="石原結實の絶対健康法 표지" width="500" height="745" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2250,7 +2252,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784250201028">
               <td class="col-no" data-label="번호">21</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-new">직접 등록</span><a class="cover-save" href="photos/covers/9784250201028.jpg" download="9784250201028.jpg"><img src="photos/covers/9784250201028.jpg" alt="自由のパラドックスと弁証法 표지" width="321" height="475" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2270,7 +2272,7 @@
                   <p class="badges"><span class="badge badge-guess">분류는 제안값</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784901318631">
               <td class="col-no" data-label="번호">22</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784901318631.jpg" download="9784901318631.jpg"><img src="photos/covers/9784901318631.jpg" alt="見えない世界の摩訶不思議 표지" width="439" height="640" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2290,7 +2292,7 @@
                   <p class="badges"><span class="badge badge-have">ISBN 검색으로 자동 입력</span><span class="badge badge-price">알라딘 정가 16,880원</span></p>
               </td>
             </tr>
-            <tr>
+            <tr data-book-id="9784087204445">
               <td class="col-no" data-label="번호">23</td>
               <td class="col-cover" data-label="표지">
                 <span class="cover-flag cover-flag-have">알라딘 검색됨</span><a class="cover-save" href="photos/covers/9784087204445.jpg" download="9784087204445.jpg"><img src="photos/covers/9784087204445.jpg" alt="悩む力 표지" width="500" height="813" loading="lazy" decoding="async"><span class="cover-save-label">표지 저장</span></a>
@@ -2319,7 +2321,7 @@
           <summary>이 목록은 어떻게 만들었나요?</summary>
           <div class="help-body">
             <p>서가 사진에서 책등 글자를 옮겨 적은 뒤, 제목·저자·출판사를 일본 서점과 국립국회도서관 검색으로 하나씩 대조했습니다.</p>
-            <p>복사 버튼은 <b>주제목만</b> 복사합니다. 부제는 화면에만 보여 주니, 필요하면 부제까지 직접 선택해 복사하세요.</p>
+            <p>도서명을 누르면 <b>주제목만</b> 복사됩니다. 부제는 부제 칸을 따로 눌러 복사하세요.</p>
             <p>서가 만 1108의 21번은 책등이 거꾸로 꽂혀 있어, 사진을 180도 돌려 읽은 뒤 서지 검색으로 대조했습니다.</p>
             <p><b>정가</b>는 일본 국립국회도서관 서지에 기록된 <b>발행 당시 일본 정가</b>이며, 정가가 기록된 97종 중 33종은 세금 포함(화면에 표시), 나머지는 세금 별도(本体)이거나 소비세가 생기기(1989년) 전의 정가입니다. 원화는 <b>100엔 = 870원</b>(2026년 8월 22일 기준)으로 계산한 어림값이라 환율에 따라 달라집니다.</p>
             <p><b>분류</b>는 알라딘 등록 화면의 「상품 카테고리 설정」 목록에서 골랐습니다. 직접 등록할 때는 이 목록에 「외국도서 &gt; 일본 도서」가 없어서 국내도서 분류 가운데서 골라야 합니다. 책마다 일본 국립국회도서관이 매긴 분류번호(NDC)에 가장 가까운 칸을 골랐고, 한국어판이 나와 있는 두 권(繁栄 → 『이성적 낙관주의자』, ホーキング、宇宙のすべてを語る → 『짧고 쉽게 쓴 시간의 역사』)은 알라딘이 한국어판에 붙인 분류를 따랐습니다.</p>
@@ -2347,6 +2349,7 @@
       </footer>
     </main>
 
-    <script src="src/books.js?v=12"></script>
+    <script src="src/books.js?v=13"></script>
+    <script src="src/books-done.js?v=13"></script>
   </body>
 </html>

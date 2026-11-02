@@ -201,3 +201,43 @@ test("같은 책을 두 번 넣지 않는다(원래 있던 두 권 제외)", () 
   /* 古代史 不都合な真実, 「歴史認識」とは何か는 실물이 두 권씩 있어 목록에도 두 번 있다. */
   assert.deepEqual(twice, ["9784121023322", "9784408337647"]);
 });
+
+test("모든 책에 바뀌지 않는 고유 번호가 있다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  const rows = [...html.matchAll(/<tr data-book-id="([^"]+)">([\s\S]*?)<\/tr>/g)];
+  assert.equal(rows.length, (html.match(/<td class="col-no"/g) || []).length, "번호 없는 행이 없어야 한다");
+  const ids = rows.map((row) => row[1]);
+  assert.equal(new Set(ids).size, ids.length, "번호가 겹치면 다른 책까지 함께 빠진다");
+  for (const [, id, row] of rows) {
+    assert.match(id, /^(?:97[89]\d{10}(?:-[2-9])?|noisbn-[0-9a-z]{1,10}-\d{1,3})$/);
+    const isbn = row.match(/field-isbn" data-copy="(\d{13})"/);
+    if (isbn) {
+      assert.equal(id.replace(/-\d$/, ""), isbn[1], `${id}의 ISBN이 행과 다르다`);
+    } else {
+      assert.ok(
+        row.includes(`photos/covers/${id}.jpg`) || row.includes("cover-missing"),
+        `${id}의 표지 파일이 행과 다르다`
+      );
+    }
+  }
+});
+
+test("등록 완료 안내는 기능이 켜질 때까지 숨겨 둔다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  assert.match(html, /<p class="done-howto" hidden><b>알라딘 등록을 마친 책<\/b>/);
+  assert.equal((html.match(/목록에서 빼기/g) || []).length, 1, "다른 곳에 고정 문구로 두지 않는다");
+});
+
+test("책 목록의 등록 완료 주소는 운영 주소 아니면 off다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  const metas = html.match(/<meta name="done-api"[^>]*>/g) || [];
+  assert.equal(metas.length, 1, "메타는 한 줄만 둔다");
+  assert.match(metas[0], /^<meta name="done-api" content="(?:https:\/\/books-api\.fuledoc\.com|off)">$/);
+});
+
+test("입력기는 등록 완료 기능을 불러오지 않는다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "index.html"), "utf8");
+  assert.equal(/https?:\/\//.test(html), false);
+  assert.equal(html.includes("books-done"), false);
+  assert.equal(html.includes("done-api"), false);
+});

@@ -390,6 +390,133 @@
   font-size: 13px;
 }
 
+/* ---------- 알라딘 등록 완료 ---------- */
+/* 표지 저장 바로 밑에 두면 저장하려다 잘못 누르기 쉬워 책 정보 맨 아래에 둔다.
+   이번 방문에 누른 책(.is-here)은 그 자리에 흐리게 남긴다. 바로 접으면 아래 행이
+   올라와 다음에 누를 자리가 바뀐다. 숨김은 클래스로 한다. 좁은 화면의 행은
+   display:block이라 hidden 속성이 듣지 않는다. */
+.done-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 14px 22px 2px;
+}
+
+/* 경고는 목록을 내려 보는 중에도 보여야 한다. 위쪽 안내줄만으로는 보이지 않는다.
+   화면을 적게 차지하도록 권수와 보기 버튼은 함께 붙이지 않는다. */
+.done-alert {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 10px;
+  padding: 10px 22px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.done-alert[hidden] {
+  display: none;
+}
+
+.done-summary {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.done-toggle,
+.done-retry,
+.done-button {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid var(--brand);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--brand-strong);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.done-toggle:hover,
+.done-retry:hover,
+.done-button:hover {
+  background: var(--brand-tint);
+}
+
+.done-toggle:focus-visible,
+.done-retry:focus-visible,
+.done-button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.done-button[disabled] {
+  border-color: var(--border);
+  color: var(--text-muted);
+  cursor: wait;
+}
+
+.done-warning {
+  flex: 1;
+  margin: 0;
+  color: var(--danger);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.done-slot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.done-label {
+  color: #135f37;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.done-label:empty,
+.done-message:empty {
+  display: none;
+}
+
+.done-message {
+  width: 100%;
+  margin: 0;
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+body:not(.show-done) .book-table tr.is-done:not(.is-here),
+.booklist.all-done {
+  display: none;
+}
+
+.book-table tr.is-done .col-cover,
+.book-table tr.is-done .fields,
+.book-table tr.is-done .badges,
+.book-table tr.is-done .check-note {
+  opacity: 0.55;
+}
+
+@media (prefers-color-scheme: dark) {
+  .done-label {
+    color: #93dcb4;
+  }
+}
+
 /* ---------- 상태 배지 ---------- */
 /* 알라딘에 이미 있는 책은 ISBN 검색만으로 끝나고, 없는 책은 손으로 다 넣어야 한다.
    작업량이 완전히 다르므로 행에서 바로 구분되게 한다. */
@@ -557,6 +684,22 @@
 @media (max-width: 640px) {
   .booklist {
     padding: 8px 14px 4px;
+  }
+
+  .done-bar {
+    padding: 12px 14px 2px;
+  }
+
+  .done-alert {
+    padding: 8px 14px;
+  }
+
+  .done-retry {
+    flex: none;
+  }
+
+  .done-button {
+    width: 100%;
   }
 
   .book-table thead {

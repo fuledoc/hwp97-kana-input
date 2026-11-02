@@ -1,0 +1,16 @@
+{
+  "name": "books-done",
+  "main": "index.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [{ "pattern": "books-api.fuledoc.com", "custom_domain": true }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "books-done",
+      "database_id": "c39e8365-475b-48bd-a234-a9e5112e0519"
+    }
+  ],
+  "vars": { "ALLOWED_ORIGIN": "https://fuledoc.github.io" }
+}
