@@ -65,6 +65,11 @@
   background: var(--surface-muted);
 }
 
+/* 한 서가를 여러 장에 나눠 찍은 묶음 */
+.group-photo img + img {
+  margin-top: 8px;
+}
+
 .group-photo figcaption {
   margin-top: 6px;
   color: var(--text-muted);
