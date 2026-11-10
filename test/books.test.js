@@ -222,6 +222,14 @@ test("모든 책에 바뀌지 않는 고유 번호가 있다", () => {
   }
 });
 
+test("사용법은 위에 펼쳐 두지 않고 목록 아래에 접어 둔다", () => {
+  const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
+  assert.equal(html.includes('class="howto"'), false, "위쪽 설명란은 사용자 요청으로 없앴다(2026-11-10)");
+  const howto = html.indexOf('class="help books-note books-howto"');
+  assert.ok(howto > html.lastIndexOf('<section class="booklist"'), "사용법은 책 목록 아래에 있다");
+  assert.match(html.slice(howto, howto + 200), /<details>\s*<summary>사용법<\/summary>/);
+});
+
 test("등록 완료 안내는 기능이 켜질 때까지 숨겨 둔다", () => {
   const html = fs.readFileSync(path.join(__dirname, "..", "books.html"), "utf8");
   assert.match(html, /<p class="done-howto" hidden><b>알라딘 등록을 마친 책<\/b>/);

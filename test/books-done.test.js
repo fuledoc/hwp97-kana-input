@@ -60,6 +60,11 @@ class Node {
     list.splice(list.indexOf(this) + 1, 0, node);
     node.parent = this.parent;
   }
+  before(...nodes) {
+    const list = this.parent.children;
+    list.splice(list.indexOf(this), 0, ...nodes);
+    for (const node of nodes) node.parent = this.parent;
+  }
   remove() {
     const list = this.parent.children;
     list.splice(list.indexOf(this), 1);
@@ -118,14 +123,14 @@ function makeSection(ids) {
 /* respond(url, options)가 값이나 약속을 돌려준다. { status, body } 또는 throw. */
 function setup({ respond, api = "https://api.test", groups = [["a1", "a2"], ["b1"]], storage, prompt } = {}) {
   const page = new Node("body");
-  const howto = new Node();
-  howto.className = "howto";
+  const howto = new Node("section"); /* 맨 아래에 접어 둔 사용법 */
+  howto.className = "help books-howto";
   const howtoLine = new Node("p");
   howtoLine.className = "done-howto";
   howtoLine.hidden = true;
   howto.append(howtoLine);
   const sections = groups.map(makeSection);
-  page.append(howto, ...sections);
+  page.append(...sections, howto);
 
   const docListeners = {};
   const windowListeners = {};
@@ -240,6 +245,13 @@ test("주소가 없으면 버튼도 요청도 없고 목록은 그대로다", as
   assert.equal(env.page.querySelector(".done-button"), null);
   assert.equal(env.page.querySelector(".done-bar"), null);
   assert.equal(env.howtoLine.hidden, true, "없는 버튼을 안내하지 않는다");
+});
+
+test("등록 현황과 경고 띠는 첫 묶음 바로 위에 책들과 나란히 둔다", async () => {
+  const env = setup({ respond: withDone({}) });
+  await env.settle();
+  const order = env.page.children.map((node) => [...node.cls][0]);
+  assert.deepEqual(order.slice(0, 3), ["done-bar", "done-alert", "booklist"], "경고 띠가 위에 붙으려면 책들과 같은 부모여야 한다");
 });
 
 test("켜지면 사용법에 등록 완료 안내가 나온다", async () => {

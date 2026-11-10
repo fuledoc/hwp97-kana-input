@@ -254,26 +254,6 @@
   font-size: 14px;
 }
 
-/* ---------- 사용법 안내 ---------- */
-.howto {
-  margin: 0 22px 4px;
-  padding: 12px 16px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--brand-tint);
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-.howto p {
-  margin: 4px 0;
-}
-
-.howto b {
-  color: var(--brand-strong);
-}
-
 /* ---------- 항목별 정보 ---------- */
 /* 알라딘 상품 등록 화면의 칸 순서와 칸 이름을 그대로 따른다.
    위에서 아래로 읽으면서 그대로 옮겨 적을 수 있어야 한다. */
@@ -757,6 +737,11 @@
   padding: 14px 22px 8px;
 }
 
+/* 사용법은 맨 위에 펼쳐 두지 않고 목록 아래에 접어 둔다(사용자 요청 2026-11-10) */
+.books-howto + .books-note {
+  padding-top: 0;
+}
+
 .books-note .help-body p {
   margin: 8px 0;
   color: var(--text);
@@ -852,10 +837,6 @@
   .cover-flag,
   .cover-missing {
     width: 148px;
-  }
-
-  .howto {
-    margin: 0 14px 4px;
   }
 
     }

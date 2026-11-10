@@ -404,8 +404,7 @@
     retry.hidden = true;
     alert.append(warning, retry);
 
-    document.querySelector(".howto").after(box);
-    box.after(alert);
+    document.querySelector("section.booklist").before(box, alert); /* 첫 묶음 바로 위. 사용법은 맨 아래에 접혀 있다 */
 
     toggle.addEventListener("click", () => {
       if (listOpen) {
